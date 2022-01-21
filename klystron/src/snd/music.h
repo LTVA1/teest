@@ -39,7 +39,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 #define MUS_PROG_LEN 255
 #define MUS_MAX_CHANNELS CYD_MAX_CHANNELS
 
-#define MUS_VERSION 31
+#define MUS_VERSION 32
 
 #define MUS_SONG_TITLE_LEN 255
 #define MUS_INSTRUMENT_NAME_LEN 255
@@ -59,17 +59,22 @@ typedef struct
 	Uint16 pw;
 	Uint8 volume;
 	
+	Uint8 vol_ksl_level; //wasn't there
+	Uint8 env_ksl_level;
+	
 	Uint8 mixmode; //wasn't there
 	Uint8 slope;
 	
 	Uint16 program[MUS_PROG_LEN];
+	Uint8 program_unite_bits[MUS_PROG_LEN / 8 + 1];
+	
 	Uint8 prog_period; 
 	Uint8 vibrato_speed, vibrato_depth, slide_speed, pwm_speed, pwm_depth;
 	
 	Uint8 tremolo_speed, tremolo_delay, tremolo_shape, tremolo_depth; //wasn't there
 	Uint8 pwm_delay;
 	
-	Uint8 fm_vibrato_speed, fm_vibrato_delay, fm_vibrato_shape, fm_vibrato_depth;
+	Uint8 fm_vibrato_speed, fm_vibrato_delay, fm_vibrato_shape, fm_vibrato_depth; //wasn't there
 	Uint8 fm_tremolo_speed, fm_tremolo_delay, fm_tremolo_shape, fm_tremolo_depth; //wasn't there
 	
 	Uint8 base_note;
@@ -80,16 +85,25 @@ typedef struct
 	Sint16 buzz_offset;
 	Uint8 fx_bus, vibrato_shape, vibrato_delay, pwm_shape;
 	char name[MUS_INSTRUMENT_NAME_LEN + 1];
+	
 	Uint8 wavetable_entry;
+	
+	Uint8 morph_wavetable_entry;
+	Uint8 morph_speed, morph_shape, morph_delay;
+	
 	Uint8 lfsr_type;
 	Sint8 finetune;
 	Uint32 fm_flags;
-	Uint8 fm_modulation, fm_feedback, fm_wave, fm_harmonic, fm_freq_LUT;
+	Uint8 fm_modulation, fm_feedback, fm_wave, fm_harmonic, fm_freq_LUT; //last wasn't there
 	MusAdsr fm_adsr;
+	
+	Uint8 fm_vol_ksl_level; //wasn't there
+	Uint8 fm_env_ksl_level; //wasn't there
+	
 	Uint8 fm_attack_start;
 	
 	Uint8 fm_base_note; //weren't there
-	Sint8 fm_finetune;
+	Sint8 fm_finetune; //wasn't there
 
 } MusInstrument;
 
@@ -110,6 +124,7 @@ enum
 	MUS_INST_MULTIOSC = 2048,
 	
 	MUS_INST_SAVE_LFO_SETTINGS = 4096,
+	MUS_INST_INVERT_TREMOLO_BIT = 8192,
 };
 
 enum
@@ -139,7 +154,7 @@ typedef struct
 typedef struct
 {
 	Uint8 note, instrument, ctrl;
-	Uint16 command;
+	Uint16 command, command2, command3, command4; //was Uint16 command;
 	Uint8 volume;
 } MusStep;
 
@@ -190,6 +205,7 @@ typedef struct
 	Sint8 note_offset;
 	Uint16 filter_cutoff;
 	Uint8 filter_resonance;
+	Uint8 filter_slope;
 	Uint8 extarp1, extarp2;
 	Uint8 volume;
 	Uint8 vibrato_delay;
@@ -197,6 +213,11 @@ typedef struct
 	Uint8 pwm_delay, tremolo_delay; //wasn't there
 	
 	Uint8 fm_tremolo_delay, fm_vibrato_delay;
+	
+	Uint8 tremolo_speed, tremolo_depth;
+	Uint8 vibrato_speed, vibrato_depth;
+	Uint8 pwm_speed, pwm_depth;
+	
 	Uint8 fm_tremolo_speed, fm_tremolo_depth, fm_tremolo_shape;
 	Uint8 fm_vibrato_speed, fm_vibrato_depth, fm_vibrato_shape;
 	Uint16 fm_vibrato_position, fm_tremolo_position;
@@ -270,6 +291,11 @@ enum
 	MUS_FX_PORTA_DN_LOG = 0x0600,
 	MUS_FX_SLIDE = 0x0300,
 	MUS_FX_VIBRATO = 0x0400,
+	MUS_FX_TREMOLO = 0x2400, //wasn't there
+	MUS_FX_PWM = 0x2500, //wasn't there
+	MUS_FX_SWEEP = 0x2600, //wasn't there //26xy filter sweep, by default unlooped saw LFO with speed x and depth y
+	MUS_FX_FM_VIBRATO = 0x2700, //wasn't there
+	MUS_FX_FM_TREMOLO = 0x2800, //wasn't there
 	MUS_FX_FADE_VOLUME = 0x0a00,
 	MUS_FX_SET_VOLUME = 0x0c00,
 	MUS_FX_LOOP_PATTERN = 0x0d00,
@@ -292,11 +318,16 @@ enum
 	MUS_FX_FADE_GLOBAL_VOLUME = 0x1a00,
 	MUS_FX_SET_GLOBAL_VOLUME = 0x1d00,
 	MUS_FX_SET_CHANNEL_VOLUME = 0x1c00,
+	MUS_FX_SET_VOL_KSL_LEVEL = 0x3700, //wasn't there
+	MUS_FX_SET_FM_VOL_KSL_LEVEL = 0x3800, //wasn't there
+	MUS_FX_SET_ENV_KSL_LEVEL = 0x3c00, //wasn't there
+	MUS_FX_SET_FM_ENV_KSL_LEVEL = 0x3d00, //wasn't there
 	MUS_FX_CUTOFF_UP = 0x2100,
 	MUS_FX_CUTOFF_DN = 0x2200,
 	MUS_FX_CUTOFF_SET = 0x2900,
 	MUS_FX_RESONANCE_SET = 0x2a00,
 	MUS_FX_FILTER_TYPE = 0x2b00,
+	MUS_FX_FILTER_SLOPE = 0x0e30, //wasn't there
 	MUS_FX_CUTOFF_SET_COMBINED = 0x2c00,
 	MUS_FX_BUZZ_UP = 0x3100,
 	MUS_FX_BUZZ_DN = 0x3200,
@@ -319,6 +350,8 @@ enum
 	MUS_FX_SET_DOWNSAMPLE = 0x1e00,
 	MUS_FX_WAVETABLE_OFFSET = 0x5000,
 	MUS_FX_CUTOFF_FINE_SET = 0x6000,
+	MUS_FX_PW_FINE_SET = 0x8000, //wasn't there
+	MUS_FX_MORPH = 0x9000, //wasn't there //9xxy, morph to wave xx with speed of y
 	MUS_FX_END = 0xffff,
 	MUS_FX_JUMP = 0xff00,
 	MUS_FX_LABEL = 0xfd00,
@@ -333,15 +366,16 @@ enum
 	MUS_CTRL_LEGATO = MUS_CTRL_BIT,
 	MUS_CTRL_SLIDE = MUS_CTRL_BIT << 1,
 	MUS_CTRL_VIB = MUS_CTRL_BIT << 2,
-	MUS_CTRL_TREMOLO = MUS_CTRL_BIT << 4 //wasn't there
+	MUS_CTRL_TREM = MUS_CTRL_BIT << 3 //wasn't there
 };
 
-enum
+enum //song flags
 {
 	MUS_ENABLE_REVERB = 1,
 	MUS_ENABLE_CRUSH = 2,
 	MUS_ENABLE_MULTIPLEX = 4,
-	MUS_NO_REPEAT = 8
+	MUS_NO_REPEAT = 8,
+	MUS_8_BIT_PATTERN_INDEX = 16, //wasn't there
 };
 
 enum

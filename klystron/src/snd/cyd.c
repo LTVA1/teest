@@ -70,12 +70,12 @@ static void cyd_init_channel(CydEngine *cyd, CydChannel *chn)
 {
 	memset(chn, 0, sizeof(*chn));
 	chn->pw = 0x400;
-	cyd_set_filter_coeffs(cyd, chn, 2047, 0);
+	cyd_set_filter_coeffs(cyd, chn, 4095, 0);
 #ifdef STEREOOUTPUT
 	cyd_set_panning(cyd, chn, CYD_PAN_CENTER);
 #endif
 
-	for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+	for (int s = 0; s < CYD_SUB_OSCS; ++s)
 	{
 		chn->subosc[s].random = RANDOM_SEED;
 		chn->subosc[s].reg4 = chn->subosc[s].reg5 = chn->subosc[s].reg9 = 1;
@@ -89,13 +89,13 @@ static void cyd_init_channel(CydEngine *cyd, CydChannel *chn)
 
 static void cyd_init_log_tables(CydEngine *cyd)
 {
-	for (int i = 0 ; i < LUT_SIZE ; ++i)
+	for (int i = 0; i < LUT_SIZE; ++i)
 	{
 		cyd->lookup_table[i] = i * (i/2) / ((LUT_SIZE*LUT_SIZE / 65536)/2);
 	}
 	
 #ifndef CYD_DISABLE_BUZZ
-	for (int i = 0 ; i < YM_LUT_SIZE ; ++i)
+	for (int i = 0; i < YM_LUT_SIZE; ++i)
 	{
 		static const int ymVolumeTable[16] = { 62,161,265,377,580,774,1155,1575,2260,3088,4570,6233,9330,13187,21220,32767}; // from leonard's code
 		cyd->lookup_table_ym[i] = ymVolumeTable[i]; //(Uint32)32767 * (Uint32)(i+1) * (Uint32)(i+1) * (Uint32)(i+1) / (Uint32)(YM_LUT_SIZE * YM_LUT_SIZE * YM_LUT_SIZE);
@@ -111,7 +111,7 @@ void cyd_reset_wavetable(CydEngine *cyd)
 #ifndef CYD_DISABLE_WAVETABLE
 	memset(cyd->wavetable_entries, 0, sizeof(cyd->wavetable_entries[0]) * CYD_WAVE_MAX_ENTRIES);
 
-	for (int i = 0 ; i < CYD_WAVE_MAX_ENTRIES ; ++i)
+	for (int i = 0; i < CYD_WAVE_MAX_ENTRIES; ++i)
 	{
 		cyd_wave_entry_init(&cyd->wavetable_entries[i], NULL, 0, 0, 0, 0, 0);
 	}
@@ -146,7 +146,7 @@ void cyd_init(CydEngine *cyd, Uint16 sample_rate, int channels)
 	
 	cyd_init_log_tables(cyd);
 	
-	for (int i = 0 ; i < CYD_MAX_FX_CHANNELS ; ++i)
+	for (int i = 0; i < CYD_MAX_FX_CHANNELS; ++i)
 		cydfx_init(&cyd->fx[i], sample_rate);
 #ifndef CYD_DISABLE_WAVETABLE
 	cyd->wavetable_entries = calloc(sizeof(cyd->wavetable_entries[0]), CYD_WAVE_MAX_ENTRIES);
@@ -207,7 +207,7 @@ void cyd_deinit(CydEngine *cyd)
 		cyd->channel = NULL;
 	}
 	
-	for (int i = 0 ; i < CYD_MAX_FX_CHANNELS ; ++i)
+	for (int i = 0; i < CYD_MAX_FX_CHANNELS; ++i)
 		cydfx_deinit(&cyd->fx[i]);
 	
 #ifndef USENATIVEAPIS
@@ -230,7 +230,7 @@ void cyd_deinit(CydEngine *cyd)
 #ifndef CYD_DISABLE_WAVETABLE
 	if (cyd->wavetable_entries)
 	{
-		for (int i = 0 ; i < CYD_WAVE_MAX_ENTRIES ; ++i)
+		for (int i = 0; i < CYD_WAVE_MAX_ENTRIES; ++i)
 			cyd_wave_entry_deinit(&cyd->wavetable_entries[i]);
 			
 		free(cyd->wavetable_entries);
@@ -242,7 +242,7 @@ void cyd_deinit(CydEngine *cyd)
 
 void cyd_reset(CydEngine *cyd)
 {
-	for (int i = 0 ; i < cyd->n_channels ; ++i)
+	for (int i = 0; i < cyd->n_channels; ++i)
 	{
 		cyd_init_channel(cyd, &cyd->channel[i]);
 		cyd->channel[i].sync_source = i;
@@ -250,7 +250,7 @@ void cyd_reset(CydEngine *cyd)
 }
 
 
-Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, CydAdsr *adsr)
+Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, CydAdsr *adsr, double env_ksl_mult)
 {
 	if (!(flags & CYD_CHN_ENABLE_YM_ENV))
 	{
@@ -270,7 +270,10 @@ Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, C
 			{
 				adsr->envelope_state = DECAY;
 				adsr->envelope=0xff0000;
-				adsr->env_speed = envspd(eng, adsr->d);
+				//adsr->env_speed = envspd(eng, adsr->d);
+				adsr->env_speed = (int)((double)envspd(eng, adsr->d) * env_ksl_mult);
+				
+				//debug("decay spd %d", adsr->env_speed);
 			}
 			
 			break;
@@ -283,7 +286,8 @@ Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, C
 				{
 					adsr->envelope = (Uint32)adsr->s << 19;
 					adsr->envelope_state = (adsr->s == 0) ? RELEASE : SUSTAIN;
-					adsr->env_speed = envspd(eng, adsr->r);;
+					//adsr->env_speed = envspd(eng, adsr->r);
+					adsr->env_speed = (int)((double)envspd(eng, adsr->r) * env_ksl_mult);
 				}
 			
 			break;
@@ -303,6 +307,7 @@ Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, C
 		}
 #endif
 	}
+	
 	else
 	{
 #ifndef CYD_DISABLE_BUZZ	
@@ -369,7 +374,7 @@ Uint32 cyd_cycle_adsr(const CydEngine *eng, Uint32 flags, Uint32 ym_env_shape, C
 #ifndef CYD_DISABLE_LFSR
 static void run_lfsrs(CydChannel *chn)
 {
-	for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+	for (int s = 0; s < CYD_SUB_OSCS; ++s)
 	{
 		shift_lfsr(&chn->subosc[s].reg4, 4, 3);
 		shift_lfsr(&chn->subosc[s].reg5, 5, 3);
@@ -385,11 +390,11 @@ static void run_lfsrs(CydChannel *chn)
 
 static void cyd_cycle_channel(CydEngine *cyd, CydChannel *chn)
 {
-	chn->flags = cyd_cycle_adsr(cyd, chn->flags, chn->ym_env_shape, &chn->adsr);
+	chn->flags = cyd_cycle_adsr(cyd, chn->flags, chn->ym_env_shape, &chn->adsr, chn->env_ksl_mult);
 	
 	if (chn->flags & CYD_CHN_ENABLE_WAVE) 
 	{
-		for (int i = 0 ; i < CYD_SUB_OSCS ; ++i)
+		for (int i = 0; i < CYD_SUB_OSCS; ++i)
 		{
 			cyd_wave_cycle(&chn->subosc[i].wave, chn->wave_entry);
 		}
@@ -406,7 +411,7 @@ static void cyd_sync_channel(CydEngine *cyd, CydChannel *chn)
 {
 	if ((chn->flags & CYD_CHN_ENABLE_SYNC) && cyd->channel[chn->sync_source].sync_bit)
 	{
-		for (int i = 0 ; i < CYD_SUB_OSCS ; ++i)
+		for (int i = 0; i < CYD_SUB_OSCS; ++i)
 		{
 			chn->subosc[i].wave.acc = 0;
 			chn->subosc[i].wave.direction = 0;
@@ -423,7 +428,7 @@ static void cyd_sync_channel(CydEngine *cyd, CydChannel *chn)
 
 static void cyd_advance_oscillators(CydEngine *cyd, CydChannel *chn)
 {
-	for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+	for (int s = 0; s < CYD_SUB_OSCS; ++s)
 	{
 		Uint32 prev_acc = chn->subosc[s].accumulator;
 		chn->subosc[s].accumulator = (chn->subosc[s].accumulator + (Uint32)chn->subosc[s].frequency);
@@ -507,9 +512,9 @@ static Sint32 cyd_output_channel(CydEngine *cyd, CydChannel *chn)
 	const Uint32 mod = (chn->flags & CYD_CHN_ENABLE_FM) ? cydfm_modulate(cyd, &chn->fm, 0) : 0;
 #endif
 	
-	for (int i = 0 ; i < (1 << cyd->oversample) ; ++i)
+	for (int i = 0; i < (1 << cyd->oversample); ++i)
 	{
-		for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+		for (int s = 0; s < CYD_SUB_OSCS; ++s)
 		{
 			if (chn->subosc[s].frequency != 0)
 			{
@@ -562,7 +567,7 @@ Sint32 cyd_env_output(const CydEngine *cyd, Uint32 chn_flags, const CydAdsr *ads
 		if (adsr->envelope_state == ATTACK)
 			return ((Sint64)input * ((Sint32)adsr->envelope / 0x10000) / 256) * (Sint32)(adsr->volume) / MAX_VOLUME;
 		else
-			return ((Sint64)input * (cyd->lookup_table[(adsr->envelope / (65536*256 / LUT_SIZE) ) & (LUT_SIZE - 1)]) / 65536) * (Sint32)(adsr->volume) / MAX_VOLUME;
+			return ((Sint64)input * (cyd->lookup_table[(adsr->envelope / (65536 * 256 / LUT_SIZE) ) & (LUT_SIZE - 1)]) / 65536) * (Sint32)(adsr->volume) / MAX_VOLUME;
 #else
 		return input * (Sint32)(adsr->volume) / MAX_VOLUME;
 #endif
@@ -584,7 +589,7 @@ static Sint32 cyd_output(CydEngine *cyd)
 #endif
 	Sint32 s[CYD_MAX_CHANNELS];
 	
-	for (int i = 0 ; i < cyd->n_channels ; ++i)
+	for (int i = 0; i < cyd->n_channels; ++i)
 	{
 		s[i] = (Sint32)cyd_output_channel(cyd, &cyd->channel[i]);
 #ifndef CYD_DISABLE_WAVETABLE
@@ -627,10 +632,22 @@ static Sint32 cyd_output(CydEngine *cyd)
 	for (int i = 0; i < cyd->n_channels; ++i)
 	{
 		CydChannel *chn = &cyd->channel[i];
+	
+		Sint16 vol_ksl_level_final = (chn->flags & CYD_CHN_ENABLE_VOLUME_KEY_SCALING) ? chn->vol_ksl_level : -1;
+		
+		double vol_ksl_mult = (vol_ksl_level_final == -1) ? 1.0 : (pow((get_freq((chn->base_note << 8) + chn->finetune) + 1.0) / (get_freq(chn->freq_for_ksl) + 1.0), (vol_ksl_level_final == 0 ? 0 : (vol_ksl_level_final / 127.0))));
+		
+		Sint16 env_ksl_level_final = (chn->flags & CYD_CHN_ENABLE_ENVELOPE_KEY_SCALING) ? chn->env_ksl_level : -1;
+		
+		chn->env_ksl_mult = (env_ksl_level_final == -1) ? 1.0 : (pow((get_freq((chn->base_note << 8) + chn->finetune) + 1.0) / (get_freq(chn->freq_for_ksl) + 1.0), (env_ksl_level_final == 0 ? 0 : (env_ksl_level_final / 127.0))));
+		chn->env_ksl_mult = 1.0 / chn->env_ksl_mult;
+		
+		//chn->fm.fm_env_ksl_mult = chn->fm_env_ksl_mult;
+		
 		Sint32 o = 0;
 
 		if (chn->flags & CYD_CHN_ENABLE_GATE)
-		{
+		{	
 			if(chn->tremolo_interpolation_counter < 171)
 			{
 				chn->curr_tremolo = chn->prev_tremolo + (chn->tremolo - chn->prev_tremolo) * chn->tremolo_interpolation_counter / 171;
@@ -654,14 +671,14 @@ static Sint32 cyd_output(CydEngine *cyd)
 				chn->fm.fm_curr_tremolo = chn->fm.fm_tremolo;
 			}
 			
-			
 			if (chn->flags & CYD_CHN_ENABLE_RING_MODULATION)
 			{
 				o = cyd_env_output(cyd, chn->flags, &chn->adsr, s[i] * (s[chn->ring_mod] + (WAVE_AMP / 2)) / WAVE_AMP) * (cyd->channel[i].curr_tremolo + 512) / 512;
 			}
+			
 			else
 			{
-				o = cyd_env_output(cyd, chn->flags, &chn->adsr, s[i]) * (cyd->channel[i].curr_tremolo + 512) / 512;
+				o = (Sint32)cyd_env_output(cyd, chn->flags, &chn->adsr, s[i]) * (cyd->channel[i].curr_tremolo + 512) / 512 * vol_ksl_mult;
 			}
 			
 			/*if ((cyd->channel[i].fm.flags & CYD_FM_ENABLE_ADDITIVE) && (cyd->channel[i].flags & CYD_CHN_ENABLE_FM)) //new additive fm 2-op design
@@ -709,66 +726,20 @@ static Sint32 cyd_output(CydEngine *cyd)
 #ifndef CYD_DISABLE_FILTER
 			if (chn->flags & CYD_CHN_ENABLE_FILTER) 
 			{
-				cydflt_cycle(&chn->flt, o);
-				
-				
-				switch (chn->flttype)
+				for(int i = 0; i < (int)pow(2, chn->flt_slope); i++)
 				{
-					case FLT_BP: o = cydflt_output_bp(&chn->flt); break;
-					default: case FLT_LP: o = cydflt_output_lp(&chn->flt); break;
-					case FLT_HP: o = cydflt_output_hp(&chn->flt); break; //was only up to there
-					
-					case FLT_LH: o = (cydflt_output_lp(&chn->flt) + cydflt_output_hp(&chn->flt)) / 2; break;
-					case FLT_HB: o = (cydflt_output_hp(&chn->flt) + cydflt_output_bp(&chn->flt)) / 2; break;
-					case FLT_LB: o = (cydflt_output_lp(&chn->flt) + cydflt_output_bp(&chn->flt)) / 2; break;
-					case FLT_ALL: o = (cydflt_output_lp(&chn->flt) + cydflt_output_bp(&chn->flt) + cydflt_output_hp(&chn->flt)) / 3; break;
-				}
-				
-				if(chn->flt_slope == 1)
-				{
-					cydflt_cycle(&chn->flt2, o);
+					cydflt_cycle(&chn->flts[i], o);
 				
 					switch (chn->flttype)
 					{
-						case FLT_BP: o = cydflt_output_bp(&chn->flt2); break;
-						default: case FLT_LP: o = cydflt_output_lp(&chn->flt2); break;
-						case FLT_HP: o = cydflt_output_hp(&chn->flt2); break; //was only up to there
+						case FLT_BP: o = cydflt_output_bp(&chn->flts[i]); break;
+						default: case FLT_LP: o = cydflt_output_lp(&chn->flts[i]); break;
+						case FLT_HP: o = cydflt_output_hp(&chn->flts[i]); break; //was only up to there
 						
-						case FLT_LH: o = (cydflt_output_lp(&chn->flt2) + cydflt_output_hp(&chn->flt2)) / 2; break;
-						case FLT_HB: o = (cydflt_output_hp(&chn->flt2) + cydflt_output_bp(&chn->flt2)) / 2; break;
-						case FLT_LB: o = (cydflt_output_lp(&chn->flt2) + cydflt_output_bp(&chn->flt2)) / 2; break;
-						case FLT_ALL: o = (cydflt_output_lp(&chn->flt2) + cydflt_output_bp(&chn->flt2) + cydflt_output_hp(&chn->flt2)) / 3; break;
-					}
-				}
-				
-				if(chn->flt_slope == 2)
-				{
-					cydflt_cycle(&chn->flt3, o);
-				
-					switch (chn->flttype)
-					{
-						case FLT_BP: o = cydflt_output_bp(&chn->flt3); break;
-						default: case FLT_LP: o = cydflt_output_lp(&chn->flt3); break;
-						case FLT_HP: o = cydflt_output_hp(&chn->flt3); break; //was only up to there
-						
-						case FLT_LH: o = (cydflt_output_lp(&chn->flt3) + cydflt_output_hp(&chn->flt3)) / 2; break;
-						case FLT_HB: o = (cydflt_output_hp(&chn->flt3) + cydflt_output_bp(&chn->flt3)) / 2; break;
-						case FLT_LB: o = (cydflt_output_lp(&chn->flt3) + cydflt_output_bp(&chn->flt3)) / 2; break;
-						case FLT_ALL: o = (cydflt_output_lp(&chn->flt3) + cydflt_output_bp(&chn->flt3) + cydflt_output_hp(&chn->flt3)) / 3; break;
-					}
-					
-					cydflt_cycle(&chn->flt4, o);
-					
-					switch (chn->flttype)
-					{
-						case FLT_BP: o = cydflt_output_bp(&chn->flt4); break;
-						default: case FLT_LP: o = cydflt_output_lp(&chn->flt4); break;
-						case FLT_HP: o = cydflt_output_hp(&chn->flt4); break; //was only up to there
-						
-						case FLT_LH: o = (cydflt_output_lp(&chn->flt4) + cydflt_output_hp(&chn->flt4)) / 2; break;
-						case FLT_HB: o = (cydflt_output_hp(&chn->flt4) + cydflt_output_bp(&chn->flt4)) / 2; break;
-						case FLT_LB: o = (cydflt_output_lp(&chn->flt4) + cydflt_output_bp(&chn->flt4)) / 2; break;
-						case FLT_ALL: o = (cydflt_output_lp(&chn->flt4) + cydflt_output_bp(&chn->flt4) + cydflt_output_hp(&chn->flt4)) / 3; break;
+						case FLT_LH: o = (cydflt_output_lp(&chn->flts[i]) + cydflt_output_hp(&chn->flts[i])) / 2; break;
+						case FLT_HB: o = (cydflt_output_hp(&chn->flts[i]) + cydflt_output_bp(&chn->flts[i])) / 2; break;
+						case FLT_LB: o = (cydflt_output_lp(&chn->flts[i]) + cydflt_output_bp(&chn->flts[i])) / 2; break;
+						case FLT_ALL: o = (cydflt_output_lp(&chn->flts[i]) + cydflt_output_bp(&chn->flts[i]) + cydflt_output_hp(&chn->flts[i])) / 3; break;
 					}
 				}
 			}
@@ -799,7 +770,7 @@ static Sint32 cyd_output(CydEngine *cyd)
 		}
 	}
 	
-	for (int i = 0 ; i < CYD_MAX_FX_CHANNELS ; ++i)
+	for (int i = 0; i < CYD_MAX_FX_CHANNELS; ++i)
 	{
 #ifdef STEREOOUTPUT
 		Sint32 l, r;
@@ -819,12 +790,12 @@ static Sint32 cyd_output(CydEngine *cyd)
 
 static void cyd_cycle(CydEngine *cyd)
 {
-	for (int i = 0 ; i < cyd->n_channels ; ++i)
+	for (int i = 0; i < cyd->n_channels; ++i)
 	{
 		cyd_cycle_channel(cyd, &cyd->channel[i]);
 	}
 	
-	for (int i = 0 ; i < cyd->n_channels ; ++i)
+	for (int i = 0; i < cyd->n_channels; ++i)
 	{
 		cyd_sync_channel(cyd, &cyd->channel[i]);
 	}
@@ -841,7 +812,7 @@ void cyd_output_buffer(int chan, void *_stream, int len, void *udata)
 	Sint16 * stream = (void*)_stream;
 	cyd->samples_output = 0;
 	
-	for (int i = 0 ; i < len ; i += sizeof(Sint16), ++stream, ++cyd->samples_output)
+	for (int i = 0; i < len; i += sizeof(Sint16), ++stream, ++cyd->samples_output)
 	{
 	
 #ifndef USENATIVEAPIS
@@ -874,7 +845,7 @@ void cyd_output_buffer(int chan, void *_stream, int len, void *udata)
 		
 		cyd_lock(cyd, 1);
 		
-		for (int g = 0 ; g < BUFFER_GRANULARITY && i < len ; i += sizeof(Sint16)*2, stream += 2, ++cyd->samples_output)
+		for (int g = 0; g < BUFFER_GRANULARITY && i < len; i += sizeof(Sint16)*2, stream += 2, ++cyd->samples_output)
 		{
 		
 			if (cyd->callback && cyd->callback_counter-- == 0)
@@ -926,7 +897,7 @@ void cyd_output_buffer_stereo(int chan, void *_stream, int len, void *udata)
 	cyd->samples_output = 0;
 	cyd->flags &= ~CYD_CLIPPING;
 	
-	for (int i = 0 ; i < len ; )
+	for (int i = 0; i < len; )
 	{
 #ifndef USENATIVEAPIS
 	
@@ -958,7 +929,7 @@ void cyd_output_buffer_stereo(int chan, void *_stream, int len, void *udata)
 		
 		cyd_lock(cyd, 1);
 		
-		for (int g = 0 ; g < BUFFER_GRANULARITY && i < len ; i += sizeof(Sint16)*2, stream += 2, ++cyd->samples_output)
+		for (int g = 0; g < BUFFER_GRANULARITY && i < len; i += sizeof(Sint16)*2, stream += 2, ++cyd->samples_output)
 		{
 		
 			if (cyd->callback && cyd->callback_counter-- == 0)
@@ -1100,20 +1071,24 @@ void cyd_enable_gate(CydEngine *cyd, CydChannel *chn, Uint8 enable)
 #ifndef CYD_DISABLE_ENVELOPE
 			chn->adsr.envelope_state = ATTACK;
 			chn->adsr.envelope = 0x0;
-			chn->adsr.env_speed = envspd(cyd, chn->adsr.a);
-			chn->flags = cyd_cycle_adsr(cyd, chn->flags, chn->ym_env_shape, &chn->adsr);
+			
+			//chn->adsr.env_speed = envspd(cyd, chn->adsr.a);
+			chn->adsr.env_speed = (int)((double)envspd(cyd, chn->adsr.a) * chn->env_ksl_mult);
+			
+			chn->flags = cyd_cycle_adsr(cyd, chn->flags, chn->ym_env_shape, &chn->adsr, chn->env_ksl_mult);
 #ifndef CYD_DISABLE_FM	
 			chn->fm.adsr.envelope_state = ATTACK;
 			chn->fm.adsr.envelope = chn->fm.attack_start << 19;
-			chn->fm.adsr.env_speed = envspd(cyd, chn->fm.adsr.a);
-			cyd_cycle_adsr(cyd, 0, 0, &chn->fm.adsr);
+			//chn->fm.adsr.env_speed = envspd(cyd, chn->fm.adsr.a);
+			chn->fm.adsr.env_speed = (int)((double)envspd(cyd, chn->fm.adsr.a) * chn->fm.fm_env_ksl_mult);
+			cyd_cycle_adsr(cyd, 0, 0, &chn->fm.adsr, chn->fm.fm_env_ksl_mult);
 #endif
 #endif
 		}
 		
 		if (chn->flags & CYD_CHN_ENABLE_KEY_SYNC)
 		{
-			for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+			for (int s = 0; s < CYD_SUB_OSCS; ++s)
 			{
 				chn->subosc[s].accumulator = 0;
 				chn->subosc[s].reg4 = chn->subosc[s].reg5 = chn->subosc[s].reg9 = 1;
@@ -1128,11 +1103,14 @@ void cyd_enable_gate(CydEngine *cyd, CydChannel *chn, Uint8 enable)
 		
 		chn->flags |= CYD_CHN_ENABLE_GATE;
 	}
+	
 	else
 	{
 		chn->flags &= ~CYD_CHN_WAVE_OVERRIDE_ENV;
 		chn->adsr.envelope_state = RELEASE;
-		chn->adsr.env_speed = envspd(cyd, chn->adsr.r);
+		
+		chn->adsr.env_speed = (int)((double)envspd(cyd, chn->adsr.r) * chn->env_ksl_mult);
+		//chn->adsr.env_speed = envspd(cyd, chn->adsr.r);
 		
 #ifndef CYD_DISABLE_FM
 		chn->fm.adsr.envelope_state = RELEASE;
@@ -1350,7 +1328,7 @@ int cyd_register(CydEngine * cyd)
 		return 0;
 	}
 	
-	for (int i = 0 ; i < CYD_NUM_WO_BUFFERS ; ++i)
+	for (int i = 0; i < CYD_NUM_WO_BUFFERS; ++i)
 	{
 		WAVEHDR * h = &cyd->waveout_hdr[i];
 		
@@ -1427,7 +1405,7 @@ int cyd_unregister(CydEngine * cyd)
 	
 	waveOutReset(cyd->hWaveOut);
 
-	for (int i = 0 ; i < CYD_NUM_WO_BUFFERS ; ++i)
+	for (int i = 0; i < CYD_NUM_WO_BUFFERS; ++i)
 	{
 		if (cyd->waveout_hdr[i].dwFlags & WHDR_PREPARED)
 			waveOutUnprepareHeader(cyd->hWaveOut, &cyd->waveout_hdr[i], sizeof(cyd->waveout_hdr[i]));
@@ -1447,23 +1425,9 @@ void cyd_set_filter_coeffs(CydEngine * cyd, CydChannel *chn, Uint16 cutoff, Uint
 {
 #ifndef CYD_DISABLE_FILTER
 	//static const Uint16 resonance_table[] = {10, 512, 1300, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 4500}; //was {10, 512, 1300, 1950}
-	if(chn->flt_slope == 0)
+	for(int i = 0; i < (int)pow(2, chn->flt_slope); i++)
 	{
-		cydflt_set_coeff(&chn->flt, cutoff, resonance);
-	}
-	
-	if(chn->flt_slope == 1)
-	{
-		cydflt_set_coeff(&chn->flt, cutoff, resonance / 3); //will do like `cydflt_set_coeff(&chn->flt, cutoff, resonance_table[resonance & 15]);`
-		cydflt_set_coeff(&chn->flt2, cutoff, resonance / 2);
-	}
-	
-	if(chn->flt_slope == 2)
-	{
-		cydflt_set_coeff(&chn->flt, cutoff, 0); //will do like `cydflt_set_coeff(&chn->flt, cutoff, resonance_table[resonance & 15]);`
-		cydflt_set_coeff(&chn->flt2, cutoff, 0);
-		cydflt_set_coeff(&chn->flt3, cutoff, resonance / 2);
-		cydflt_set_coeff(&chn->flt4, cutoff, resonance / 2);
+		cydflt_set_coeff(&chn->flts[i], cutoff, resonance);
 	}
 #endif
 }
@@ -1546,7 +1510,7 @@ void cyd_set_wave_entry(CydChannel *chn, const CydWavetableEntry * entry)
 {
 	chn->wave_entry = entry;
 	
-	for (int s = 0 ; s < CYD_SUB_OSCS ; ++s)
+	for (int s = 0; s < CYD_SUB_OSCS; ++s)
 	{
 		chn->subosc[s].wave.playing = true;
 		chn->subosc[s].wave.acc = 0;

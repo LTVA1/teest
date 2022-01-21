@@ -57,14 +57,14 @@ bool export_wav(MusSong *song, CydWavetableEntry * entry, FILE *f, int channel)
 	{
 		// if channel is positive then only export that channel (mute other chans)
 		
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 			mus.channel[i].flags |= MUS_CHN_DISABLED;
 		
 		mus.channel[channel].flags &= ~MUS_CHN_DISABLED;
 	}
 	else
 	{
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 			mus.channel[i].flags &= ~MUS_CHN_DISABLED;
 	}
 	

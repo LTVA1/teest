@@ -139,7 +139,7 @@ void change_oversample(void *oversample, void *unused1, void *unused2)
 
 	mused.oversample = CASTPTR(int,oversample);
 
-	for (int i = 0 ; i < 4; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		if (oversamplemenu[i].p1 == oversample)
 			oversamplemenu[i].flags |= MENU_BULLET;
@@ -294,9 +294,11 @@ void generic_action(void *func, void *unused1, void *unused2)
 
 void quit_action(void *unused1, void *unused2, void *unused3)
 {
-	mused.done = 1;
+	if (confirm(domain, mused.slider_bevel, &mused.largefont, "Do you really want to exit?"))
+	{
+		mused.done = 1;
+	}
 }
-
 
 void change_mode_action(void *mode, void *unused1, void *unused2)
 {
@@ -321,23 +323,27 @@ void solo_channel(void *_channel, void *unused1, void *unused2)
 	if (channel == -1)
 		channel = mused.current_sequencetrack;
 
-	for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+	for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 		if (!(mused.mus.channel[i].flags & MUS_CHN_DISABLED))
 			++c;
 
 	if (c == 1 && !(mused.mus.channel[channel].flags & MUS_CHN_DISABLED))
 	{
 		debug("Unmuted all");
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 			mused.mus.channel[i].flags &= ~MUS_CHN_DISABLED;
 
 		set_info_message("Unmuted all channels");
 	}
+	
 	else
 	{
 		debug("Solo chn %d", CASTPTR(int,channel));
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
+		{
 			mused.mus.channel[i].flags |= MUS_CHN_DISABLED;
+		}
 
 		mused.mus.channel[channel].flags &= ~MUS_CHN_DISABLED;
 
@@ -348,7 +354,7 @@ void solo_channel(void *_channel, void *unused1, void *unused2)
 
 void unmute_all_action(void *unused1, void *unused2, void *unused3)
 {
-	for(int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+	for(int i = 0; i < MUS_MAX_CHANNELS; ++i)
 		mused.mus.channel[i].flags &= ~MUS_CHN_DISABLED;
 }
 
@@ -389,7 +395,7 @@ void cycle_focus(void *_views, void *_focus, void *_mode)
 	View *views = viewlist[*mode];
 
 	int i;
-	for (i = 0 ; views[i].handler ; ++i)
+	for (i = 0; views[i].handler; ++i)
 	{
 		if (views[i].focus == *focus) break;
 	}
@@ -398,7 +404,7 @@ void cycle_focus(void *_views, void *_focus, void *_mode)
 
 	int next;
 
-	for (next = i + 1 ; i != next ; ++next)
+	for (next = i + 1; i != next; ++next)
 	{
 		if (views[next].handler == NULL)
 		{
@@ -560,7 +566,7 @@ void change_pixel_scale(void *scale, void*b, void*c)
 
 	set_scaled_cursor();
 
-	for (int i = 0 ; i < 4; ++i)
+	for (int i = 0; i < 4; ++i)
 	{
 		if (pixelmenu[i].p1 == scale)
 			pixelmenu[i].flags |= MENU_BULLET;
@@ -640,7 +646,7 @@ void change_timesig(void *delta, void *b, void *c)
 
 	static const Uint16 sigs[] = { 0x0404, 0x0304, 0x0604, 0x0308, 0x0608, 0x0908, 0x0c08 };
 	int i;
-	for (i = 0 ; i < sizeof(sigs) / sizeof(sigs[0]) ; ++i)
+	for (i = 0; i < sizeof(sigs) / sizeof(sigs[0]); ++i)
 	{
 		if (sigs[i] == mused.time_signature)
 			break;
@@ -703,12 +709,12 @@ void export_channels_action(void *a, void*b, void*c)
 	{
 		strncpy(mused.previous_export_filename, filename, sizeof(mused.previous_export_filename) - 1);
 
-		for (int i = 0 ; i < mused.song.num_channels ; ++i)
+		for (int i = 0; i < mused.song.num_channels; ++i)
 		{
 			char c_filename[1500], tmp[1000];
 			strncpy(tmp, filename, sizeof(tmp) - 1);
 
-			for (int c = strlen(tmp) - 1 ; c >= 0 ; --c)
+			for (int c = strlen(tmp) - 1; c >= 0; --c)
 			{
 				if (tmp[c] == '.')
 				{
@@ -917,7 +923,7 @@ void set_note_jump(void *steps, void *unused1, void *unused2)
 
 void change_default_pattern_length(void *length, void *unused1, void *unused2)
 {
-	for (int i = 0 ; i < NUM_PATTERNS ; ++i)
+	for (int i = 0; i < NUM_PATTERNS; ++i)
 	{
 		if (mused.song.pattern[i].num_steps == mused.default_pattern_length && is_pattern_empty(&mused.song.pattern[i]))
 		{
@@ -927,7 +933,7 @@ void change_default_pattern_length(void *length, void *unused1, void *unused2)
 
 	mused.sequenceview_steps = mused.default_pattern_length = CASTPTR(int,length);
 
-	for (Menu *m = patternlengthmenu ; m->text ; ++m)
+	for (Menu *m = patternlengthmenu; m->text; ++m)
 	{
 		if (CASTPTR(int, m->p1) == mused.default_pattern_length)
 			m->flags |= MENU_BULLET;

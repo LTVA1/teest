@@ -51,11 +51,12 @@ void editparambox(int v)
 	if (mused.editpos != 0 || v < 0xf)
 	{
 		// Keeps the exec next command bit intact
-		*param = (*param & 0x8000) | (((*param & mask) | ((v&0xf) <<((3-mused.editpos)*4))) & 0x7fff);
+		*param = (((*param & mask) | ((v&0xf) << ((3-mused.editpos)*4))) & 0xffff); //old command *param = (*param & 0x8000) | (((*param & mask) | ((v&0xf) <<((3-mused.editpos)*4))) & 0x7fff);
+		//*param = (*param & 0x8000) | (((*param & mask) | ((v&0xf) << ((3-mused.editpos)*4))) & 0xffff);
 	}
 	else
 	{
-		*param = ((*param & mask) | ((v&0xf) <<((3-mused.editpos)*4)));
+		*param = ((*param & mask) | ((v&0xf) << ((3-mused.editpos)*4)));
 	}
 
 	if (++mused.editpos > 3)
@@ -75,7 +76,7 @@ int find_note(int sym, int oct)
 	SDLK_i, SDLK_9, SDLK_o, SDLK_0, SDLK_p, -1};
 
 	int n = 0;
-	for (const int *i = keys ; *i != -1 ; ++i, ++n)
+	for (const int *i = keys; *i != -1; ++i, ++n)
 	{
 		if (*i == sym)
 			return n + oct*12;
@@ -277,6 +278,34 @@ void instrument_add_param(int a)
 		clamp(i->adsr.r, a, 0, 32 * ENVELOPE_SCALE - 1);
 
 		break;
+		
+		
+		
+		case P_VOL_KSL:
+		
+		flipbit(i->cydflags, CYD_CHN_ENABLE_VOLUME_KEY_SCALING);
+		
+		break;
+		
+		case P_VOL_KSL_LEVEL:
+		
+		clamp(i->vol_ksl_level, a, 0, 255);
+		
+		break;
+		
+		case P_ENV_KSL:
+		
+		flipbit(i->cydflags, CYD_CHN_ENABLE_ENVELOPE_KEY_SCALING);
+		
+		break;
+		
+		case P_ENV_KSL_LEVEL:
+		
+		clamp(i->env_ksl_level, a, 0, 255);
+		
+		break;
+		
+		
 
 		case P_BUZZ:
 
@@ -486,6 +515,12 @@ void instrument_add_param(int a)
 		flipbit(i->flags, MUS_INST_INVERT_VIBRATO_BIT);
 
 		break;
+		
+		case P_INVTREM:
+
+		flipbit(i->flags, MUS_INST_INVERT_TREMOLO_BIT);
+
+		break;
 
 		case P_FILTER:
 
@@ -515,7 +550,7 @@ void instrument_add_param(int a)
 		
 		case P_SLOPE: //wasn't there
 
-		clamp(i->slope, a, 0, 2);  //was `0, 3)`
+		clamp(i->slope, a, 0, 5);  //was `0, 3)`
 
 		break;
 
@@ -554,6 +589,35 @@ void instrument_add_param(int a)
 		clamp(i->fm_feedback, a, 0, 0x7);
 
 		break;
+		
+		
+		
+		
+		case P_FM_VOL_KSL_ENABLE:
+
+		flipbit(i->fm_flags, CYD_FM_ENABLE_VOLUME_KEY_SCALING);
+
+		break;
+		
+		case P_FM_VOL_KSL_LEVEL:
+
+		clamp(i->fm_vol_ksl_level, a, 0, 0xff);
+
+		break;
+		
+		case P_FM_ENV_KSL_ENABLE:
+
+		flipbit(i->fm_flags, CYD_FM_ENABLE_ENVELOPE_KEY_SCALING);
+
+		break;
+		
+		case P_FM_ENV_KSL_LEVEL:
+
+		clamp(i->fm_env_ksl_level, a, 0, 0xff);
+
+		break;
+		
+		
 		
 		
 		
@@ -679,7 +743,7 @@ static int find_playing_note(int n)
 {
 	cyd_lock(&mused.cyd, 1);
 
-	for (int i = 0 ; i < MUS_MAX_CHANNELS && i < mused.cyd.n_channels ; ++i)
+	for (int i = 0; i < MUS_MAX_CHANNELS && i < mused.cyd.n_channels; ++i)
 	{
 		if (note_playing[i] == n && mused.mus.channel[i].instrument == &mused.song.instrument[mused.current_instrument])
 		{
@@ -721,7 +785,7 @@ static void play_the_jams(int sym, int chn, int state)
 {
 	if (sym == SDLK_SPACE && state == 0)
 	{
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 			cyd_enable_gate(mused.mus.cyd, &mused.mus.cyd->channel[i], 0);
 	}
 	else
@@ -759,9 +823,10 @@ static void wave_the_jams(int sym)
 {
 	if (sym == SDLK_SPACE)
 	{
-		for (int i = 0 ; i < MUS_MAX_CHANNELS ; ++i)
+		for (int i = 0; i < MUS_MAX_CHANNELS; ++i)
 			cyd_enable_gate(mused.mus.cyd, &mused.mus.cyd->channel[i], 0);
 	}
+	
 	else
 	{
 		int note = find_note(sym, mused.octave);
@@ -909,7 +974,7 @@ void add_sequence(int channel, int position, int pattern, int offset)
 	if(mused.song.pattern[pattern].num_steps == 0)
 		resize_pattern(&mused.song.pattern[pattern], mused.sequenceview_steps);
 
-	for (int i = 0 ; i < mused.song.num_sequences[channel] ; ++i)
+	for (int i = 0; i < mused.song.num_sequences[channel]; ++i)
 		if (mused.song.sequence[channel][i].position == position)
 		{
 			mused.song.sequence[channel][i].pattern = pattern;
@@ -932,7 +997,7 @@ void add_sequence(int channel, int position, int pattern, int offset)
 
 Uint8 get_pattern_at(int channel, int position)
 {
-	for (int i = 0 ; i < mused.song.num_sequences[channel] ; ++i)
+	for (int i = 0; i < mused.song.num_sequences[channel]; ++i)
 		if (mused.song.sequence[channel][i].position == position)
 		{
 			return mused.song.sequence[channel][i].pattern;
@@ -946,7 +1011,7 @@ void del_sequence(int first,int last,int track)
 {
 	if (mused.song.num_sequences[track] == 0) return;
 
-	for (int i = 0 ; i < mused.song.num_sequences[mused.current_sequencetrack] ; ++i)
+	for (int i = 0; i < mused.song.num_sequences[mused.current_sequencetrack]; ++i)
 		if (mused.song.sequence[track][i].position >= first && mused.song.sequence[track][i].position < last)
 		{
 			mused.song.sequence[track][i].position = 0xffff;
@@ -961,7 +1026,7 @@ void del_sequence(int first,int last,int track)
 void add_note_offset(int a)
 {
 	{
-		for (int i = (int)mused.song.num_sequences[mused.current_sequencetrack] - 1 ; i >= 0 ; --i)
+		for (int i = (int)mused.song.num_sequences[mused.current_sequencetrack] - 1; i >= 0; --i)
 		{
 			if (mused.current_sequencepos >= mused.song.sequence[mused.current_sequencetrack][i].position &&
 				mused.song.sequence[mused.current_sequencetrack][i].position + mused.song.pattern[mused.song.sequence[mused.current_sequencetrack][i].pattern].num_steps > mused.current_sequencepos)
@@ -1132,7 +1197,7 @@ void sequence_event(SDL_Event *e)
 			{
 				snapshot(S_T_SEQUENCE);
 
-				for (int i = 0; i < mused.song.num_sequences[mused.current_sequencetrack] ; ++i)
+				for (int i = 0; i < mused.song.num_sequences[mused.current_sequencetrack]; ++i)
 				{
 					if (mused.song.sequence[mused.current_sequencetrack][i].position >= mused.current_sequencepos)
 						mused.song.sequence[mused.current_sequencetrack][i].position += mused.sequenceview_steps;
@@ -1158,7 +1223,7 @@ void sequence_event(SDL_Event *e)
 
 				if (!(mused.flags & DELETE_EMPTIES))
 				{
-					for (int i = 0; i < mused.song.num_sequences[mused.current_sequencetrack] ; ++i)
+					for (int i = 0; i < mused.song.num_sequences[mused.current_sequencetrack]; ++i)
 					{
 						if (mused.song.sequence[mused.current_sequencetrack][i].position >= mused.current_sequencepos)
 							mused.song.sequence[mused.current_sequencetrack][i].position -= mused.sequenceview_steps;
@@ -1409,7 +1474,7 @@ void pattern_event(SDL_Event *e)
 						break;
 					}
 
-					for (int i = mused.song.pattern[current_pattern()].num_steps-1; i >= current_patternstep() ; --i)
+					for (int i = mused.song.pattern[current_pattern()].num_steps-1; i >= current_patternstep(); --i)
 						memcpy(&mused.song.pattern[current_pattern()].step[i], &mused.song.pattern[current_pattern()].step[i-1], sizeof(mused.song.pattern[current_pattern()].step[0]));
 
 					zero_step(&mused.song.pattern[current_pattern()].step[current_patternstep()]);
@@ -1444,7 +1509,7 @@ void pattern_event(SDL_Event *e)
 
 					if (!(mused.flags & DELETE_EMPTIES) || e->key.keysym.sym == SDLK_BACKSPACE)
 					{
-						for (int i = current_patternstep()  ; i < mused.song.pattern[current_pattern()].num_steps ; ++i)
+						for (int i = current_patternstep() ; i < mused.song.pattern[current_pattern()].num_steps; ++i)
 							memcpy(&mused.song.pattern[current_pattern()].step[i], &mused.song.pattern[current_pattern()].step[i+1], sizeof(mused.song.pattern[current_pattern()].step[0]));
 
 						zero_step(&mused.song.pattern[current_pattern()].step[mused.song.pattern[current_pattern()].num_steps - 1]);
@@ -1479,6 +1544,7 @@ void pattern_event(SDL_Event *e)
 								case PED_LEGATO:
 								case PED_SLIDE:
 								case PED_VIB:
+								case PED_TREM:
 									mused.song.pattern[current_pattern()].step[current_patternstep()].ctrl = 0;
 									break;
 
@@ -1619,6 +1685,7 @@ void pattern_event(SDL_Event *e)
 
 							update_pattern_slider(mused.note_jump);
 						}
+						
 						else if (e->key.keysym.sym == SDLK_1)
 						{
 							mused.song.pattern[current_pattern()].step[current_patternstep()].note = MUS_NOTE_RELEASE;
@@ -1627,6 +1694,7 @@ void pattern_event(SDL_Event *e)
 
 							update_pattern_slider(mused.note_jump);
 						}
+						
 						else
 						{
 							int note = find_note(e->key.keysym.sym, mused.octave);
@@ -1637,6 +1705,7 @@ void pattern_event(SDL_Event *e)
 							}
 						}
 					}
+					
 					else if (mused.current_patternx == PED_INSTRUMENT1 || mused.current_patternx == PED_INSTRUMENT2)
 					{
 						if (e->key.keysym.sym == SDLK_PERIOD)
@@ -1676,6 +1745,7 @@ void pattern_event(SDL_Event *e)
 							update_pattern_slider(mused.note_jump);
 						}
 					}
+					
 					else if (mused.current_patternx == PED_VOLUME1 || mused.current_patternx == PED_VOLUME2)
 					{
 						switch (e->key.keysym.sym)
@@ -1752,6 +1822,7 @@ void pattern_event(SDL_Event *e)
 								break;
 						}
 					}
+					
 					else if (mused.current_patternx >= PED_COMMAND1 && mused.current_patternx <= PED_COMMAND4)
 					{
 						if (gethex(e->key.keysym.sym) != -1)
@@ -1779,11 +1850,12 @@ void pattern_event(SDL_Event *e)
 
 							snapshot(S_T_PATTERN);
 
-							mused.song.pattern[current_pattern()].step[current_patternstep()].command = validate_command(inst) & 0x7fff;
+							mused.song.pattern[current_pattern()].step[current_patternstep()].command = validate_command(inst) & 0xffff; //you need `0x7fff` there to return old command system
 
 							update_pattern_slider(mused.note_jump);
 						}
 					}
+					
 					else if (mused.current_patternx >= PED_CTRL && mused.current_patternx < PED_COMMAND1)
 					{
 						if (e->key.keysym.sym == SDLK_PERIOD || e->key.keysym.sym == SDLK_0)
@@ -1794,6 +1866,7 @@ void pattern_event(SDL_Event *e)
 
 							update_pattern_slider(mused.note_jump);
 						}
+						
 						if (e->key.keysym.sym == SDLK_1)
 						{
 							snapshot(S_T_PATTERN);
@@ -1842,7 +1915,8 @@ void edit_program_event(SDL_Event *e)
 				snapshot(S_T_INSTRUMENT);
 
 				if ((mused.song.instrument[mused.current_instrument].program[mused.current_program_step] & 0xf000) != 0xf000)
-					mused.song.instrument[mused.current_instrument].program[mused.current_program_step] ^= 0x8000;
+					//mused.song.instrument[mused.current_instrument].program[mused.current_program_step] ^= 0x8000; //old command mused.song.instrument[mused.current_instrument].program[mused.current_program_step] ^= 0x8000;
+					mused.song.instrument[mused.current_instrument].program_unite_bits[mused.current_program_step / 8] ^= (1 << (mused.current_program_step % 8));
 			}
 			break;
 
@@ -1895,8 +1969,22 @@ void edit_program_event(SDL_Event *e)
 			case SDLK_INSERT:
 			{
 				snapshot(S_T_INSTRUMENT);
-				for (int i = MUS_PROG_LEN-1; i > mused.current_program_step ; --i)
+				for (int i = MUS_PROG_LEN-1; i > mused.current_program_step; --i)
+				{
 					mused.song.instrument[mused.current_instrument].program[i] = mused.song.instrument[mused.current_instrument].program[i-1];
+					
+					bool b = (mused.song.instrument[mused.current_instrument].program_unite_bits[(i - 1) / 8] & (1 << ((i - 1) % 8)));
+					
+					if(b == false)
+					{
+						mused.song.instrument[mused.current_instrument].program_unite_bits[i / 8] &= ~(1 << (i % 8));
+					}
+					
+					else
+					{
+						mused.song.instrument[mused.current_instrument].program_unite_bits[i / 8] |= (1 << (i % 8));
+					}
+				}
 				mused.song.instrument[mused.current_instrument].program[mused.current_program_step] = MUS_FX_NOP;
 			}
 			break;
@@ -1913,13 +2001,31 @@ void edit_program_event(SDL_Event *e)
 
 				if (!(mused.flags & DELETE_EMPTIES) || e->key.keysym.sym == SDLK_BACKSPACE)
 				{
-					for (int i = mused.current_program_step  ; i < MUS_PROG_LEN-1 ; ++i)
+					for (int i = mused.current_program_step; i < MUS_PROG_LEN-1; ++i)
+					{
 						mused.song.instrument[mused.current_instrument].program[i] = mused.song.instrument[mused.current_instrument].program[i+1];
+						
+						bool b = (mused.song.instrument[mused.current_instrument].program_unite_bits[(i + 1) / 8] & (1 << ((i + 1) % 8)));
+						
+						if(b == false)
+						{
+							mused.song.instrument[mused.current_instrument].program_unite_bits[i / 8] &= ~(1 << (i % 8));
+						}
+						
+						else
+						{
+							mused.song.instrument[mused.current_instrument].program_unite_bits[i / 8] |= (1 << (i % 8));
+						}
+					}
 					mused.song.instrument[mused.current_instrument].program[MUS_PROG_LEN-1] = MUS_FX_NOP;
 				}
+				
 				else
 				{
 					mused.song.instrument[mused.current_instrument].program[mused.current_program_step] = MUS_FX_NOP;
+					
+					mused.song.instrument[mused.current_instrument].program_unite_bits[mused.current_program_step / 8] &= ~(1 << (mused.current_program_step % 8));
+					
 					++mused.current_program_step;
 					if (mused.current_program_step >= MUS_PROG_LEN)
 						mused.current_program_step = MUS_PROG_LEN - 1;
@@ -1995,7 +2101,7 @@ void set_room_size(int fx, int size, int vol, int dec)
 
 	int low = CYDRVB_LOW_LIMIT + 300; // +30 dB
 
-	for (int i = 0 ; i < CYDRVB_TAPS ;++i)
+	for (int i = 0; i < CYDRVB_TAPS;++i)
 	{
 		int p, g, e = 1;
 
@@ -2188,6 +2294,13 @@ void fx_add_param(int d)
 			mus_set_fx(&mused.mus, &mused.song);
 		}
 		break;
+		
+		case R_NUM_TAPS: //wasn't there
+		{
+			clamp(mused.song.fx[mused.fx_bus].rvb.taps_quant, d * 1, 0, CYDRVB_TAPS);
+			mus_set_fx(&mused.mus, &mused.song);
+		}
+		break;
 
 		case R_PANNING:
 		{
@@ -2270,7 +2383,7 @@ void wave_add_param(int d)
 		{
 			case W_BASE: d *= 12; break;
 			case W_BASEFINE: d *= 16; break;
-			default: d *= 256; break;
+			default: d *= 16; break;
 		}
 	}
 	

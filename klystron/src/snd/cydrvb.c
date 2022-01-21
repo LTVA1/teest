@@ -44,7 +44,7 @@ void cydrvb_init(CydReverb *rvb, int rate)
 	rvb->buffer = calloc(sizeof(*rvb->buffer), bufsize);
 #endif
 	
-	for (int i = 0 ; i < CYDRVB_TAPS ; ++i)
+	for (int i = 0; i < CYDRVB_TAPS; ++i)
 	{
 		cydrvb_set_tap(rvb, i, i * 100 + 50, (i + 1) * -30, CYD_PAN_CENTER);
 	}
@@ -61,7 +61,7 @@ void cydrvb_deinit(CydReverb *rvb)
 #ifdef STEREOOUTPUT
 void cydrvb_cycle(CydReverb *rvb, Sint32 left, Sint32 right)
 {
-	for (int i = 0 ; i < CYDRVB_TAPS ; ++i)
+	for (int i = 0; i < CYDRVB_TAPS; ++i)
 	{
 		++rvb->tap[i].position;
 		if (rvb->tap[i].position >= rvb->size)
@@ -80,7 +80,7 @@ void cydrvb_cycle(CydReverb *rvb, Sint32 left, Sint32 right)
 
 void cydrvb_cycle(CydReverb *rvb, Sint32 input)
 {
-	for (int i = 0 ; i < CYDRVB_TAPS ; ++i)
+	for (int i = 0; i < CYDRVB_TAPS; ++i)
 	{
 		++rvb->tap[i].position;
 		if (rvb->tap[i].position >= rvb->size)
@@ -101,7 +101,7 @@ void cydrvb_output(CydReverb *rvb, Sint32 *left, Sint32 *right)
 	*left = 0;
 	*right = 0;
 	
-	for (int i = 0 ; i < CYDRVB_TAPS ; ++i)
+	for (int i = 0; i < CYDRVB_TAPS; ++i)
 	{
 		if (rvb->tap[i].gain_l != 0 || rvb->tap[i].gain_r != 0)
 		{
@@ -117,7 +117,7 @@ Sint32 cydrvb_output(CydReverb *rvb)
 {
 	Sint32 o = 0;
 	
-	for (int i = 0 ; i < CYDRVB_TAPS ; ++i)
+	for (int i = 0; i < CYDRVB_TAPS; ++i)
 	{
 		if (rvb->tap[i].gain != 0)
 		{

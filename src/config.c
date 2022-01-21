@@ -109,7 +109,7 @@ void load_config(const char *path, bool apply)
 			if (sscanf(line, "%400[^ =]", name) == 1)
 			{
 				int i;
-				for (i = 0; confitem[i].type != C_END ; ++i)
+				for (i = 0; confitem[i].type != C_END; ++i)
 				{
 					if (strcmp(confitem[i].name, name) == 0)
 					{
@@ -184,7 +184,7 @@ void save_config(const char *path)
 	if (e) free(e);
 	if (f)
 	{
-		for (int i = 0; confitem[i].type != C_END ; ++i)
+		for (int i = 0; confitem[i].type != C_END; ++i)
 		{
 			switch (confitem[i].type)
 			{

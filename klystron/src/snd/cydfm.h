@@ -7,6 +7,8 @@
 
 #include "music_defs.h"
 
+
+
 typedef struct //wasn't there
 {
     Uint16 input, output;
@@ -21,6 +23,7 @@ typedef struct //wasn't there
     Uint8 mixmode; 
     
     Uint16 program[MUS_PROG_LEN];
+	Uint8 program_unite_bits[MUS_PROG_LEN / 8 + 1];
 	
 	Uint8 env_offset, program_offset; //<-----
 	
@@ -63,6 +66,12 @@ typedef struct
 	Uint8 fm_carrier_base_note;
 	Sint8 fm_carrier_finetune;
 	
+	Uint8 fm_vol_ksl_level;
+	Uint8 fm_env_ksl_level;
+	Uint32 freq_for_fm_ksl;
+	double fm_vol_ksl_mult;
+	double fm_env_ksl_mult;
+	
 	CydFmOp ops[MUS_FM_NUM_OPS];
 	
 	Uint8 fm_freq_LUT;
@@ -73,6 +82,8 @@ typedef struct
 	Sint16 fm_curr_tremolo;
 	
 	Sint16 fm_vib;
+	
+	//Uint32 counter;
 	
 } CydFm;
 
