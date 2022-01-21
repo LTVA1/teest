@@ -1,0 +1,1147 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		002F3A2E09D0888800EBEB88 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 002F3A2C09D0888800EBEB88 /* SDLMain.m */; };
+		690F323C1ED4BB0A0011FD0E /* hubbard.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F32381ED4BB0A0011FD0E /* hubbard.c */; };
+		690F323D1ED4BB0A0011FD0E /* hubdialog.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F323A1ED4BB0A0011FD0E /* hubdialog.c */; };
+		690F32471ED4BB240011FD0E /* memwriter.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F323E1ED4BB240011FD0E /* memwriter.c */; };
+		690F32481ED4BB240011FD0E /* stats.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F32411ED4BB240011FD0E /* stats.c */; };
+		690F32491ED4BB240011FD0E /* wavewriter.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F32431ED4BB240011FD0E /* wavewriter.c */; };
+		690F324A1ED4BB240011FD0E /* zap.c in Sources */ = {isa = PBXBuildFile; fileRef = 690F32451ED4BB240011FD0E /* zap.c */; };
+		8343837F19F2C341001EDF56 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 8343837E19F2C341001EDF56 /* res */; };
+		83722F13167AAA8F00336AFC /* key in Resources */ = {isa = PBXBuildFile; fileRef = 83722F0F167AAA8F00336AFC /* key */; };
+		8377DBE919F2A24500994874 /* makebundle.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DBE819F2A24500994874 /* makebundle.c */; };
+		8377DD1F19F2A5A500994874 /* action.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCC719F2A5A500994874 /* action.c */; };
+		8377DD2019F2A5A500994874 /* clipboard.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCC919F2A5A500994874 /* clipboard.c */; };
+		8377DD2119F2A5A500994874 /* command.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCCB19F2A5A500994874 /* command.c */; };
+		8377DD2219F2A5A500994874 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCCD19F2A5A500994874 /* config.c */; };
+		8377DD2319F2A5A500994874 /* console.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCCF19F2A5A500994874 /* console.c */; };
+		8377DD2419F2A5A500994874 /* copypaste.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCD119F2A5A500994874 /* copypaste.c */; };
+		8377DD2519F2A5A500994874 /* diskop.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCD319F2A5A500994874 /* diskop.c */; };
+		8377DD2619F2A5A500994874 /* edit.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCD519F2A5A500994874 /* edit.c */; };
+		8377DD2719F2A5A500994874 /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCD719F2A5A500994874 /* event.c */; };
+		8377DD2819F2A5A500994874 /* export.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCD919F2A5A500994874 /* export.c */; };
+		8377DD2919F2A5A500994874 /* help.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCDB19F2A5A500994874 /* help.c */; };
+		8377DD2A19F2A5A500994874 /* ahx.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCDE19F2A5A500994874 /* ahx.c */; };
+		8377DD2B19F2A5A500994874 /* import.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCE019F2A5A500994874 /* import.c */; };
+		8377DD2C19F2A5A500994874 /* mod.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCE219F2A5A500994874 /* mod.c */; };
+		8377DD2D19F2A5A500994874 /* org.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCE419F2A5A500994874 /* org.c */; };
+		8377DD2E19F2A5A500994874 /* xm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCE619F2A5A500994874 /* xm.c */; };
+		8377DD2F19F2A5A500994874 /* key.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCE819F2A5A500994874 /* key.c */; };
+		8377DD3019F2A5A500994874 /* keytab.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCEA19F2A5A500994874 /* keytab.c */; };
+		8377DD3119F2A5A500994874 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCEC19F2A5A500994874 /* main.c */; };
+		8377DD3219F2A5A500994874 /* menudefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCED19F2A5A500994874 /* menudefs.c */; };
+		8377DD3319F2A5A500994874 /* midi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCEE19F2A5A500994874 /* midi.c */; };
+		8377DD3419F2A5A500994874 /* mused.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCF019F2A5A500994874 /* mused.c */; };
+		8377DD3519F2A5A500994874 /* nostalgy.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCF419F2A5A500994874 /* nostalgy.c */; };
+		8377DD3619F2A5A500994874 /* optimize.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCF619F2A5A500994874 /* optimize.c */; };
+		8377DD3719F2A5A500994874 /* shortcutdefs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCF819F2A5A500994874 /* shortcutdefs.c */; };
+		8377DD3819F2A5A500994874 /* theme.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCFA19F2A5A500994874 /* theme.c */; };
+		8377DD3919F2A5A500994874 /* undo.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DCFC19F2A5A500994874 /* undo.c */; };
+		8377DD3A19F2A5A500994874 /* version in Resources */ = {isa = PBXBuildFile; fileRef = 8377DCFE19F2A5A500994874 /* version */; };
+		8377DD3B19F2A5A500994874 /* version.in in Resources */ = {isa = PBXBuildFile; fileRef = 8377DD0119F2A5A500994874 /* version.in */; };
+		8377DD3C19F2A5A500994874 /* pattern.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD0319F2A5A500994874 /* pattern.c */; };
+		8377DD3D19F2A5A500994874 /* sequence.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD0519F2A5A500994874 /* sequence.c */; };
+		8377DD3E19F2A5A500994874 /* timer.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD0719F2A5A500994874 /* timer.c */; };
+		8377DD3F19F2A5A500994874 /* visu.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD0919F2A5A500994874 /* visu.c */; };
+		8377DD4019F2A5A500994874 /* wavetableview.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD0B19F2A5A500994874 /* wavetableview.c */; };
+		8377DD4619F2A5A500994874 /* view.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD1719F2A5A500994874 /* view.c */; };
+		8377DD4719F2A5A500994874 /* wave_action.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD1919F2A5A500994874 /* wave_action.c */; };
+		8377DD4819F2A5A500994874 /* wave.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD1B19F2A5A500994874 /* wave.c */; };
+		8377DD4919F2A5A500994874 /* wavegen.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD1D19F2A5A500994874 /* wavegen.c */; };
+		8377DDFE19F2A5D800994874 /* ksnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD9419F2A5D800994874 /* ksnd.c */; };
+		8377DE0219F2A5D800994874 /* cyd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DD9D19F2A5D800994874 /* cyd.c */; };
+		8377DE0319F2A5D800994874 /* cydchr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDA019F2A5D800994874 /* cydchr.c */; };
+		8377DE0419F2A5D800994874 /* cydcrush.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDA219F2A5D800994874 /* cydcrush.c */; };
+		8377DE0519F2A5D800994874 /* cydentry.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDA519F2A5D800994874 /* cydentry.c */; };
+		8377DE0619F2A5D800994874 /* cydflt.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDA719F2A5D800994874 /* cydflt.c */; };
+		8377DE0719F2A5D800994874 /* cydfm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDA919F2A5D800994874 /* cydfm.c */; };
+		8377DE0819F2A5D800994874 /* cydfx.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDAB19F2A5D800994874 /* cydfx.c */; };
+		8377DE0919F2A5D800994874 /* cydosc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDAD19F2A5D800994874 /* cydosc.c */; };
+		8377DE0A19F2A5D800994874 /* cydrvb.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDAF19F2A5D800994874 /* cydrvb.c */; };
+		8377DE0B19F2A5D800994874 /* cydwave.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDB219F2A5D800994874 /* cydwave.c */; };
+		8377DE0C19F2A5D800994874 /* freqs.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDB419F2A5D800994874 /* freqs.c */; };
+		8377DE0D19F2A5D800994874 /* music.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDB619F2A5D800994874 /* music.c */; };
+		8377DE0E19F2A5D800994874 /* pack.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DDB819F2A5D800994874 /* pack.c */; };
+		8377DE6719F2A6A300994874 /* background.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2019F2A6A200994874 /* background.c */; };
+		8377DE6819F2A6A300994874 /* bgcell.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2219F2A6A200994874 /* bgcell.c */; };
+		8377DE6919F2A6A300994874 /* font.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2419F2A6A200994874 /* font.c */; };
+		8377DE6A19F2A6A300994874 /* gfx.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2619F2A6A200994874 /* gfx.c */; };
+		8377DE6B19F2A6A300994874 /* levelbase.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2919F2A6A200994874 /* levelbase.c */; };
+		8377DE6C19F2A6A300994874 /* objhdr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE2B19F2A6A200994874 /* objhdr.c */; };
+		8377DE7319F2A6A300994874 /* bevel.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE3E19F2A6A200994874 /* bevel.c */; };
+		8377DE7419F2A6A300994874 /* dialog.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4019F2A6A200994874 /* dialog.c */; };
+		8377DE7519F2A6A300994874 /* filebox.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4219F2A6A200994874 /* filebox.c */; };
+		8377DE7619F2A6A300994874 /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4419F2A6A200994874 /* menu.c */; };
+		8377DE7719F2A6A300994874 /* mouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4619F2A6A200994874 /* mouse.c */; };
+		8377DE7819F2A6A300994874 /* msgbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4819F2A6A200994874 /* msgbox.c */; };
+		8377DE7919F2A6A300994874 /* shortcuts.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4A19F2A6A200994874 /* shortcuts.c */; };
+		8377DE7A19F2A6A300994874 /* slider.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4C19F2A6A200994874 /* slider.c */; };
+		8377DE7B19F2A6A300994874 /* toolutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE4E19F2A6A200994874 /* toolutil.c */; };
+		8377DE7C19F2A6A300994874 /* view.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE5019F2A6A200994874 /* view.c */; };
+		8377DE8C19F2A74D00994874 /* bundle.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE8819F2A74D00994874 /* bundle.c */; };
+		8377DE8D19F2A74D00994874 /* rnd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8377DE8A19F2A74D00994874 /* rnd.c */; };
+		8378C75C19A0EC9300AFBD43 /* SDL2.framework in Copy Frameworks into .app bundle */ = {isa = PBXBuildFile; fileRef = 8378C75B19A0EC9300AFBD43 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8378C7CA19A0F17300AFBD43 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8378C75B19A0EC9300AFBD43 /* SDL2.framework */; };
+		83C75C6812BBF7B20067F040 /* 256x256.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83C75C6712BBF7B20067F040 /* 256x256.icns */; };
+		83D5E10B19F2951F003F2ED5 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5E10A19F2951F003F2ED5 /* SDL2_image.framework */; };
+		83D5E10D19F29528003F2ED5 /* SDL2_image.framework in Copy Frameworks into .app bundle */ = {isa = PBXBuildFile; fileRef = 83D5E10A19F2951F003F2ED5 /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8343837B19F2B411001EDF56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8377DBE019F2A19900994874;
+			remoteInfo = make_bundle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		002F39FD09D0883400EBEB88 /* Copy Frameworks into .app bundle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8378C75C19A0EC9300AFBD43 /* SDL2.framework in Copy Frameworks into .app bundle */,
+				83D5E10D19F29528003F2ED5 /* SDL2_image.framework in Copy Frameworks into .app bundle */,
+			);
+			name = "Copy Frameworks into .app bundle";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8377DBDF19F2A19900994874 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		002F3A2B09D0888800EBEB88 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = SOURCE_ROOT; };
+		002F3A2C09D0888800EBEB88 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = SOURCE_ROOT; };
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		690F32381ED4BB0A0011FD0E /* hubbard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hubbard.c; path = ../src/import/hubbard.c; sourceTree = "<group>"; };
+		690F32391ED4BB0A0011FD0E /* hubbard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hubbard.h; path = ../src/import/hubbard.h; sourceTree = "<group>"; };
+		690F323A1ED4BB0A0011FD0E /* hubdialog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hubdialog.c; path = ../src/import/hubdialog.c; sourceTree = "<group>"; };
+		690F323B1ED4BB0A0011FD0E /* hubdialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hubdialog.h; path = ../src/import/hubdialog.h; sourceTree = "<group>"; };
+		690F323E1ED4BB240011FD0E /* memwriter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memwriter.c; path = ../src/memwriter.c; sourceTree = "<group>"; };
+		690F323F1ED4BB240011FD0E /* memwriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memwriter.h; path = ../src/memwriter.h; sourceTree = "<group>"; };
+		690F32401ED4BB240011FD0E /* songstats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = songstats.h; path = ../src/songstats.h; sourceTree = "<group>"; };
+		690F32411ED4BB240011FD0E /* stats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stats.c; path = ../src/stats.c; sourceTree = "<group>"; };
+		690F32421ED4BB240011FD0E /* stats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stats.h; path = ../src/stats.h; sourceTree = "<group>"; };
+		690F32431ED4BB240011FD0E /* wavewriter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wavewriter.c; path = ../src/wavewriter.c; sourceTree = "<group>"; };
+		690F32441ED4BB240011FD0E /* wavewriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wavewriter.h; path = ../src/wavewriter.h; sourceTree = "<group>"; };
+		690F32451ED4BB240011FD0E /* zap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zap.c; path = ../src/zap.c; sourceTree = "<group>"; };
+		690F32461ED4BB240011FD0E /* zap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zap.h; path = ../src/zap.h; sourceTree = "<group>"; };
+		8343837E19F2C341001EDF56 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		83722F0F167AAA8F00336AFC /* key */ = {isa = PBXFileReference; lastKnownFileType = folder; name = key; path = ../key; sourceTree = SOURCE_ROOT; };
+		8377DBE119F2A19900994874 /* make_bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = make_bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8377DBE819F2A24500994874 /* makebundle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = makebundle.c; path = ../../../klystron/tools/makebundle/makebundle.c; sourceTree = "<group>"; };
+		8377DCC719F2A5A500994874 /* action.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = action.c; path = ../src/action.c; sourceTree = "<group>"; };
+		8377DCC819F2A5A500994874 /* action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = action.h; path = ../src/action.h; sourceTree = "<group>"; };
+		8377DCC919F2A5A500994874 /* clipboard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = clipboard.c; path = ../src/clipboard.c; sourceTree = "<group>"; };
+		8377DCCA19F2A5A500994874 /* clipboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = clipboard.h; path = ../src/clipboard.h; sourceTree = "<group>"; };
+		8377DCCB19F2A5A500994874 /* command.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = command.c; path = ../src/command.c; sourceTree = "<group>"; };
+		8377DCCC19F2A5A500994874 /* command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = command.h; path = ../src/command.h; sourceTree = "<group>"; };
+		8377DCCD19F2A5A500994874 /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = config.c; path = ../src/config.c; sourceTree = "<group>"; };
+		8377DCCE19F2A5A500994874 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../src/config.h; sourceTree = "<group>"; };
+		8377DCCF19F2A5A500994874 /* console.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = console.c; path = ../src/console.c; sourceTree = "<group>"; };
+		8377DCD019F2A5A500994874 /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = console.h; path = ../src/console.h; sourceTree = "<group>"; };
+		8377DCD119F2A5A500994874 /* copypaste.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = copypaste.c; path = ../src/copypaste.c; sourceTree = "<group>"; };
+		8377DCD219F2A5A500994874 /* copypaste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = copypaste.h; path = ../src/copypaste.h; sourceTree = "<group>"; };
+		8377DCD319F2A5A500994874 /* diskop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = diskop.c; path = ../src/diskop.c; sourceTree = "<group>"; };
+		8377DCD419F2A5A500994874 /* diskop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = diskop.h; path = ../src/diskop.h; sourceTree = "<group>"; };
+		8377DCD519F2A5A500994874 /* edit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = edit.c; path = ../src/edit.c; sourceTree = "<group>"; };
+		8377DCD619F2A5A500994874 /* edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = edit.h; path = ../src/edit.h; sourceTree = "<group>"; };
+		8377DCD719F2A5A500994874 /* event.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = event.c; path = ../src/event.c; sourceTree = "<group>"; };
+		8377DCD819F2A5A500994874 /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = event.h; path = ../src/event.h; sourceTree = "<group>"; };
+		8377DCD919F2A5A500994874 /* export.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = export.c; path = ../src/export.c; sourceTree = "<group>"; };
+		8377DCDA19F2A5A500994874 /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = export.h; path = ../src/export.h; sourceTree = "<group>"; };
+		8377DCDB19F2A5A500994874 /* help.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = help.c; path = ../src/help.c; sourceTree = "<group>"; };
+		8377DCDC19F2A5A500994874 /* help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = help.h; path = ../src/help.h; sourceTree = "<group>"; };
+		8377DCDE19F2A5A500994874 /* ahx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ahx.c; sourceTree = "<group>"; };
+		8377DCDF19F2A5A500994874 /* ahx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ahx.h; sourceTree = "<group>"; };
+		8377DCE019F2A5A500994874 /* import.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = import.c; sourceTree = "<group>"; };
+		8377DCE119F2A5A500994874 /* import.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = import.h; sourceTree = "<group>"; };
+		8377DCE219F2A5A500994874 /* mod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mod.c; sourceTree = "<group>"; };
+		8377DCE319F2A5A500994874 /* mod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mod.h; sourceTree = "<group>"; };
+		8377DCE419F2A5A500994874 /* org.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = org.c; sourceTree = "<group>"; };
+		8377DCE519F2A5A500994874 /* org.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org.h; sourceTree = "<group>"; };
+		8377DCE619F2A5A500994874 /* xm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xm.c; sourceTree = "<group>"; };
+		8377DCE719F2A5A500994874 /* xm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xm.h; sourceTree = "<group>"; };
+		8377DCE819F2A5A500994874 /* key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = key.c; path = ../src/key.c; sourceTree = "<group>"; };
+		8377DCE919F2A5A500994874 /* key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = key.h; path = ../src/key.h; sourceTree = "<group>"; };
+		8377DCEA19F2A5A500994874 /* keytab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = keytab.c; path = ../src/keytab.c; sourceTree = "<group>"; };
+		8377DCEB19F2A5A500994874 /* keytab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = keytab.h; path = ../src/keytab.h; sourceTree = "<group>"; };
+		8377DCEC19F2A5A500994874 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../src/main.c; sourceTree = "<group>"; };
+		8377DCED19F2A5A500994874 /* menudefs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = menudefs.c; path = ../src/menudefs.c; sourceTree = "<group>"; };
+		8377DCEE19F2A5A500994874 /* midi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = midi.c; path = ../src/midi.c; sourceTree = "<group>"; };
+		8377DCEF19F2A5A500994874 /* midi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = midi.h; path = ../src/midi.h; sourceTree = "<group>"; };
+		8377DCF019F2A5A500994874 /* mused.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mused.c; path = ../src/mused.c; sourceTree = "<group>"; };
+		8377DCF119F2A5A500994874 /* mused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mused.h; path = ../src/mused.h; sourceTree = "<group>"; };
+		8377DCF219F2A5A500994874 /* mybevdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mybevdefs.h; path = ../src/mybevdefs.h; sourceTree = "<group>"; };
+		8377DCF319F2A5A500994874 /* mymsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mymsg.h; path = ../src/mymsg.h; sourceTree = "<group>"; };
+		8377DCF419F2A5A500994874 /* nostalgy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nostalgy.c; path = ../src/nostalgy.c; sourceTree = "<group>"; };
+		8377DCF519F2A5A500994874 /* nostalgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nostalgy.h; path = ../src/nostalgy.h; sourceTree = "<group>"; };
+		8377DCF619F2A5A500994874 /* optimize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = optimize.c; path = ../src/optimize.c; sourceTree = "<group>"; };
+		8377DCF719F2A5A500994874 /* optimize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = optimize.h; path = ../src/optimize.h; sourceTree = "<group>"; };
+		8377DCF819F2A5A500994874 /* shortcutdefs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = shortcutdefs.c; path = ../src/shortcutdefs.c; sourceTree = "<group>"; };
+		8377DCF919F2A5A500994874 /* shortcutdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shortcutdefs.h; path = ../src/shortcutdefs.h; sourceTree = "<group>"; };
+		8377DCFA19F2A5A500994874 /* theme.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = theme.c; path = ../src/theme.c; sourceTree = "<group>"; };
+		8377DCFB19F2A5A500994874 /* theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = theme.h; path = ../src/theme.h; sourceTree = "<group>"; };
+		8377DCFC19F2A5A500994874 /* undo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = undo.c; path = ../src/undo.c; sourceTree = "<group>"; };
+		8377DCFD19F2A5A500994874 /* undo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = undo.h; path = ../src/undo.h; sourceTree = "<group>"; };
+		8377DCFE19F2A5A500994874 /* version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = version; path = ../src/version; sourceTree = "<group>"; };
+		8377DCFF19F2A5A500994874 /* version_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version_number.h; path = ../src/version_number.h; sourceTree = "<group>"; };
+		8377DD0019F2A5A500994874 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../src/version.h; sourceTree = "<group>"; };
+		8377DD0119F2A5A500994874 /* version.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = version.in; path = ../src/version.in; sourceTree = "<group>"; };
+		8377DD0319F2A5A500994874 /* pattern.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pattern.c; sourceTree = "<group>"; };
+		8377DD0419F2A5A500994874 /* pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pattern.h; sourceTree = "<group>"; };
+		8377DD0519F2A5A500994874 /* sequence.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sequence.c; sourceTree = "<group>"; };
+		8377DD0619F2A5A500994874 /* sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sequence.h; sourceTree = "<group>"; };
+		8377DD0719F2A5A500994874 /* timer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timer.c; sourceTree = "<group>"; };
+		8377DD0819F2A5A500994874 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		8377DD0919F2A5A500994874 /* visu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = visu.c; sourceTree = "<group>"; };
+		8377DD0A19F2A5A500994874 /* visu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = visu.h; sourceTree = "<group>"; };
+		8377DD0B19F2A5A500994874 /* wavetableview.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wavetableview.c; sourceTree = "<group>"; };
+		8377DD0C19F2A5A500994874 /* wavetableview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wavetableview.h; sourceTree = "<group>"; };
+		8377DD1719F2A5A500994874 /* view.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = view.c; path = ../src/view.c; sourceTree = "<group>"; };
+		8377DD1819F2A5A500994874 /* view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = view.h; path = ../src/view.h; sourceTree = "<group>"; };
+		8377DD1919F2A5A500994874 /* wave_action.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wave_action.c; path = ../src/wave_action.c; sourceTree = "<group>"; };
+		8377DD1A19F2A5A500994874 /* wave_action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wave_action.h; path = ../src/wave_action.h; sourceTree = "<group>"; };
+		8377DD1B19F2A5A500994874 /* wave.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wave.c; path = ../src/wave.c; sourceTree = "<group>"; };
+		8377DD1C19F2A5A500994874 /* wave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wave.h; path = ../src/wave.h; sourceTree = "<group>"; };
+		8377DD1D19F2A5A500994874 /* wavegen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wavegen.c; path = ../src/wavegen.c; sourceTree = "<group>"; };
+		8377DD1E19F2A5A500994874 /* wavegen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wavegen.h; path = ../src/wavegen.h; sourceTree = "<group>"; };
+		8377DD9419F2A5D800994874 /* ksnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ksnd.c; sourceTree = "<group>"; };
+		8377DD9619F2A5D800994874 /* ksnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ksnd.h; sourceTree = "<group>"; };
+		8377DD9D19F2A5D800994874 /* cyd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cyd.c; sourceTree = "<group>"; };
+		8377DD9E19F2A5D800994874 /* cyd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cyd.h; sourceTree = "<group>"; };
+		8377DD9F19F2A5D800994874 /* cydadsr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydadsr.h; sourceTree = "<group>"; };
+		8377DDA019F2A5D800994874 /* cydchr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydchr.c; sourceTree = "<group>"; };
+		8377DDA119F2A5D800994874 /* cydchr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydchr.h; sourceTree = "<group>"; };
+		8377DDA219F2A5D800994874 /* cydcrush.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydcrush.c; sourceTree = "<group>"; };
+		8377DDA319F2A5D800994874 /* cydcrush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydcrush.h; sourceTree = "<group>"; };
+		8377DDA419F2A5D800994874 /* cyddefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cyddefs.h; sourceTree = "<group>"; };
+		8377DDA519F2A5D800994874 /* cydentry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydentry.c; sourceTree = "<group>"; };
+		8377DDA619F2A5D800994874 /* cydentry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydentry.h; sourceTree = "<group>"; };
+		8377DDA719F2A5D800994874 /* cydflt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydflt.c; sourceTree = "<group>"; };
+		8377DDA819F2A5D800994874 /* cydflt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydflt.h; sourceTree = "<group>"; };
+		8377DDA919F2A5D800994874 /* cydfm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydfm.c; sourceTree = "<group>"; };
+		8377DDAA19F2A5D800994874 /* cydfm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydfm.h; sourceTree = "<group>"; };
+		8377DDAB19F2A5D800994874 /* cydfx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydfx.c; sourceTree = "<group>"; };
+		8377DDAC19F2A5D800994874 /* cydfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydfx.h; sourceTree = "<group>"; };
+		8377DDAD19F2A5D800994874 /* cydosc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydosc.c; sourceTree = "<group>"; };
+		8377DDAE19F2A5D800994874 /* cydosc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydosc.h; sourceTree = "<group>"; };
+		8377DDAF19F2A5D800994874 /* cydrvb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydrvb.c; sourceTree = "<group>"; };
+		8377DDB019F2A5D800994874 /* cydrvb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydrvb.h; sourceTree = "<group>"; };
+		8377DDB119F2A5D800994874 /* cydtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydtypes.h; sourceTree = "<group>"; };
+		8377DDB219F2A5D800994874 /* cydwave.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cydwave.c; sourceTree = "<group>"; };
+		8377DDB319F2A5D800994874 /* cydwave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cydwave.h; sourceTree = "<group>"; };
+		8377DDB419F2A5D800994874 /* freqs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = freqs.c; sourceTree = "<group>"; };
+		8377DDB519F2A5D800994874 /* freqs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = freqs.h; sourceTree = "<group>"; };
+		8377DDB619F2A5D800994874 /* music.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = music.c; sourceTree = "<group>"; };
+		8377DDB719F2A5D800994874 /* music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = music.h; sourceTree = "<group>"; };
+		8377DDB819F2A5D800994874 /* pack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pack.c; sourceTree = "<group>"; };
+		8377DDB919F2A5D800994874 /* pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pack.h; sourceTree = "<group>"; };
+		8377DDDC19F2A5D800994874 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../klystron/src/version.h; sourceTree = "<group>"; };
+		8377DE2019F2A6A200994874 /* background.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = background.c; sourceTree = "<group>"; };
+		8377DE2119F2A6A200994874 /* background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = background.h; sourceTree = "<group>"; };
+		8377DE2219F2A6A200994874 /* bgcell.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bgcell.c; sourceTree = "<group>"; };
+		8377DE2319F2A6A200994874 /* bgcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bgcell.h; sourceTree = "<group>"; };
+		8377DE2419F2A6A200994874 /* font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = font.c; sourceTree = "<group>"; };
+		8377DE2519F2A6A200994874 /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = font.h; sourceTree = "<group>"; };
+		8377DE2619F2A6A200994874 /* gfx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gfx.c; sourceTree = "<group>"; };
+		8377DE2719F2A6A200994874 /* gfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gfx.h; sourceTree = "<group>"; };
+		8377DE2819F2A6A200994874 /* gfxsurf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gfxsurf.h; sourceTree = "<group>"; };
+		8377DE2919F2A6A200994874 /* levelbase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = levelbase.c; sourceTree = "<group>"; };
+		8377DE2A19F2A6A200994874 /* levelbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = levelbase.h; sourceTree = "<group>"; };
+		8377DE2B19F2A6A200994874 /* objhdr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = objhdr.c; sourceTree = "<group>"; };
+		8377DE2C19F2A6A200994874 /* objhdr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objhdr.h; sourceTree = "<group>"; };
+		8377DE2D19F2A6A200994874 /* tiledescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiledescriptor.h; sourceTree = "<group>"; };
+		8377DE3D19F2A6A200994874 /* bevdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bevdefs.h; sourceTree = "<group>"; };
+		8377DE3E19F2A6A200994874 /* bevel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bevel.c; sourceTree = "<group>"; };
+		8377DE3F19F2A6A200994874 /* bevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bevel.h; sourceTree = "<group>"; };
+		8377DE4019F2A6A200994874 /* dialog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dialog.c; sourceTree = "<group>"; };
+		8377DE4119F2A6A200994874 /* dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dialog.h; sourceTree = "<group>"; };
+		8377DE4219F2A6A200994874 /* filebox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = filebox.c; sourceTree = "<group>"; };
+		8377DE4319F2A6A200994874 /* filebox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filebox.h; sourceTree = "<group>"; };
+		8377DE4419F2A6A200994874 /* menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = menu.c; sourceTree = "<group>"; };
+		8377DE4519F2A6A200994874 /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
+		8377DE4619F2A6A200994874 /* mouse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mouse.c; sourceTree = "<group>"; };
+		8377DE4719F2A6A200994874 /* mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mouse.h; sourceTree = "<group>"; };
+		8377DE4819F2A6A200994874 /* msgbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = msgbox.c; sourceTree = "<group>"; };
+		8377DE4919F2A6A200994874 /* msgbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msgbox.h; sourceTree = "<group>"; };
+		8377DE4A19F2A6A200994874 /* shortcuts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shortcuts.c; sourceTree = "<group>"; };
+		8377DE4B19F2A6A200994874 /* shortcuts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shortcuts.h; sourceTree = "<group>"; };
+		8377DE4C19F2A6A200994874 /* slider.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = slider.c; sourceTree = "<group>"; };
+		8377DE4D19F2A6A200994874 /* slider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slider.h; sourceTree = "<group>"; };
+		8377DE4E19F2A6A200994874 /* toolutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = toolutil.c; sourceTree = "<group>"; };
+		8377DE4F19F2A6A200994874 /* toolutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = toolutil.h; sourceTree = "<group>"; };
+		8377DE5019F2A6A200994874 /* view.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = view.c; sourceTree = "<group>"; };
+		8377DE5119F2A6A200994874 /* view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = view.h; sourceTree = "<group>"; };
+		8377DE8819F2A74D00994874 /* bundle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bundle.c; sourceTree = "<group>"; };
+		8377DE8919F2A74D00994874 /* bundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundle.h; sourceTree = "<group>"; };
+		8377DE8A19F2A74D00994874 /* rnd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rnd.c; sourceTree = "<group>"; };
+		8377DE8B19F2A74D00994874 /* rnd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rnd.h; sourceTree = "<group>"; };
+		8378C75B19A0EC9300AFBD43 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
+		83C75C6712BBF7B20067F040 /* 256x256.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = 256x256.icns; path = ../icon/256x256.icns; sourceTree = SOURCE_ROOT; };
+		83D5E10A19F2951F003F2ED5 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = /Library/Frameworks/SDL2_image.framework; sourceTree = "<absolute>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Klystrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klystrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8377DBDE19F2A19900994874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5E10B19F2951F003F2ED5 /* SDL2_image.framework in Frameworks */,
+				8378C7CA19A0F17300AFBD43 /* SDL2.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				002F3A2B09D0888800EBEB88 /* SDLMain.h */,
+				002F3A2C09D0888800EBEB88 /* SDLMain.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83D5E10A19F2951F003F2ED5 /* SDL2_image.framework */,
+				8378C75B19A0EC9300AFBD43 /* SDL2.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Klystrack.app */,
+				8377DBE119F2A19900994874 /* make_bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* OSX_Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				8377DD4A19F2A5AB00994874 /* Klystron */,
+				8377DCC619F2A59200994874 /* Klystrack */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				8377DBE219F2A19900994874 /* make_bundle */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = OSX_Xcode;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8343837E19F2C341001EDF56 /* res */,
+				83722F0F167AAA8F00336AFC /* key */,
+				83C75C6712BBF7B20067F040 /* 256x256.icns */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8377DBE219F2A19900994874 /* make_bundle */ = {
+			isa = PBXGroup;
+			children = (
+				8377DBE819F2A24500994874 /* makebundle.c */,
+			);
+			path = make_bundle;
+			sourceTree = "<group>";
+		};
+		8377DCC619F2A59200994874 /* Klystrack */ = {
+			isa = PBXGroup;
+			children = (
+				690F323E1ED4BB240011FD0E /* memwriter.c */,
+				690F323F1ED4BB240011FD0E /* memwriter.h */,
+				690F32401ED4BB240011FD0E /* songstats.h */,
+				690F32411ED4BB240011FD0E /* stats.c */,
+				690F32421ED4BB240011FD0E /* stats.h */,
+				690F32431ED4BB240011FD0E /* wavewriter.c */,
+				690F32441ED4BB240011FD0E /* wavewriter.h */,
+				690F32451ED4BB240011FD0E /* zap.c */,
+				690F32461ED4BB240011FD0E /* zap.h */,
+				690F32381ED4BB0A0011FD0E /* hubbard.c */,
+				690F32391ED4BB0A0011FD0E /* hubbard.h */,
+				690F323A1ED4BB0A0011FD0E /* hubdialog.c */,
+				690F323B1ED4BB0A0011FD0E /* hubdialog.h */,
+				8377DCC719F2A5A500994874 /* action.c */,
+				8377DCC819F2A5A500994874 /* action.h */,
+				8377DCC919F2A5A500994874 /* clipboard.c */,
+				8377DCCA19F2A5A500994874 /* clipboard.h */,
+				8377DCCB19F2A5A500994874 /* command.c */,
+				8377DCCC19F2A5A500994874 /* command.h */,
+				8377DCCD19F2A5A500994874 /* config.c */,
+				8377DCCE19F2A5A500994874 /* config.h */,
+				8377DCCF19F2A5A500994874 /* console.c */,
+				8377DCD019F2A5A500994874 /* console.h */,
+				8377DCD119F2A5A500994874 /* copypaste.c */,
+				8377DCD219F2A5A500994874 /* copypaste.h */,
+				8377DCD319F2A5A500994874 /* diskop.c */,
+				8377DCD419F2A5A500994874 /* diskop.h */,
+				8377DCD519F2A5A500994874 /* edit.c */,
+				8377DCD619F2A5A500994874 /* edit.h */,
+				8377DCD719F2A5A500994874 /* event.c */,
+				8377DCD819F2A5A500994874 /* event.h */,
+				8377DCD919F2A5A500994874 /* export.c */,
+				8377DCDA19F2A5A500994874 /* export.h */,
+				8377DCDB19F2A5A500994874 /* help.c */,
+				8377DCDC19F2A5A500994874 /* help.h */,
+				8377DCDD19F2A5A500994874 /* import */,
+				8377DCE819F2A5A500994874 /* key.c */,
+				8377DCE919F2A5A500994874 /* key.h */,
+				8377DCEA19F2A5A500994874 /* keytab.c */,
+				8377DCEB19F2A5A500994874 /* keytab.h */,
+				8377DCEC19F2A5A500994874 /* main.c */,
+				8377DCED19F2A5A500994874 /* menudefs.c */,
+				8377DCEE19F2A5A500994874 /* midi.c */,
+				8377DCEF19F2A5A500994874 /* midi.h */,
+				8377DCF019F2A5A500994874 /* mused.c */,
+				8377DCF119F2A5A500994874 /* mused.h */,
+				8377DCF219F2A5A500994874 /* mybevdefs.h */,
+				8377DCF319F2A5A500994874 /* mymsg.h */,
+				8377DCF419F2A5A500994874 /* nostalgy.c */,
+				8377DCF519F2A5A500994874 /* nostalgy.h */,
+				8377DCF619F2A5A500994874 /* optimize.c */,
+				8377DCF719F2A5A500994874 /* optimize.h */,
+				8377DCF819F2A5A500994874 /* shortcutdefs.c */,
+				8377DCF919F2A5A500994874 /* shortcutdefs.h */,
+				8377DCFA19F2A5A500994874 /* theme.c */,
+				8377DCFB19F2A5A500994874 /* theme.h */,
+				8377DCFC19F2A5A500994874 /* undo.c */,
+				8377DCFD19F2A5A500994874 /* undo.h */,
+				8377DCFE19F2A5A500994874 /* version */,
+				8377DCFF19F2A5A500994874 /* version_number.h */,
+				8377DD0019F2A5A500994874 /* version.h */,
+				8377DD0119F2A5A500994874 /* version.in */,
+				8377DD0219F2A5A500994874 /* view */,
+				8377DD1719F2A5A500994874 /* view.c */,
+				8377DD1819F2A5A500994874 /* view.h */,
+				8377DD1919F2A5A500994874 /* wave_action.c */,
+				8377DD1A19F2A5A500994874 /* wave_action.h */,
+				8377DD1B19F2A5A500994874 /* wave.c */,
+				8377DD1C19F2A5A500994874 /* wave.h */,
+				8377DD1D19F2A5A500994874 /* wavegen.c */,
+				8377DD1E19F2A5A500994874 /* wavegen.h */,
+			);
+			name = Klystrack;
+			sourceTree = "<group>";
+		};
+		8377DCDD19F2A5A500994874 /* import */ = {
+			isa = PBXGroup;
+			children = (
+				8377DCDE19F2A5A500994874 /* ahx.c */,
+				8377DCDF19F2A5A500994874 /* ahx.h */,
+				8377DCE019F2A5A500994874 /* import.c */,
+				8377DCE119F2A5A500994874 /* import.h */,
+				8377DCE219F2A5A500994874 /* mod.c */,
+				8377DCE319F2A5A500994874 /* mod.h */,
+				8377DCE419F2A5A500994874 /* org.c */,
+				8377DCE519F2A5A500994874 /* org.h */,
+				8377DCE619F2A5A500994874 /* xm.c */,
+				8377DCE719F2A5A500994874 /* xm.h */,
+			);
+			name = import;
+			path = ../src/import;
+			sourceTree = "<group>";
+		};
+		8377DD0219F2A5A500994874 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8377DD0319F2A5A500994874 /* pattern.c */,
+				8377DD0419F2A5A500994874 /* pattern.h */,
+				8377DD0519F2A5A500994874 /* sequence.c */,
+				8377DD0619F2A5A500994874 /* sequence.h */,
+				8377DD0719F2A5A500994874 /* timer.c */,
+				8377DD0819F2A5A500994874 /* timer.h */,
+				8377DD0919F2A5A500994874 /* visu.c */,
+				8377DD0A19F2A5A500994874 /* visu.h */,
+				8377DD0B19F2A5A500994874 /* wavetableview.c */,
+				8377DD0C19F2A5A500994874 /* wavetableview.h */,
+			);
+			name = view;
+			path = ../src/view;
+			sourceTree = "<group>";
+		};
+		8377DD4A19F2A5AB00994874 /* Klystron */ = {
+			isa = PBXGroup;
+			children = (
+				8377DE8719F2A74D00994874 /* util */,
+				8377DE1F19F2A6A200994874 /* gfx */,
+				8377DE3C19F2A6A200994874 /* gui */,
+				8377DD9319F2A5D800994874 /* lib */,
+				8377DD9C19F2A5D800994874 /* snd */,
+				8377DDDC19F2A5D800994874 /* version.h */,
+			);
+			name = Klystron;
+			sourceTree = "<group>";
+		};
+		8377DD9319F2A5D800994874 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8377DD9419F2A5D800994874 /* ksnd.c */,
+				8377DD9619F2A5D800994874 /* ksnd.h */,
+			);
+			name = lib;
+			path = ../../klystron/src/lib;
+			sourceTree = "<group>";
+		};
+		8377DD9C19F2A5D800994874 /* snd */ = {
+			isa = PBXGroup;
+			children = (
+				8377DD9D19F2A5D800994874 /* cyd.c */,
+				8377DD9E19F2A5D800994874 /* cyd.h */,
+				8377DD9F19F2A5D800994874 /* cydadsr.h */,
+				8377DDA019F2A5D800994874 /* cydchr.c */,
+				8377DDA119F2A5D800994874 /* cydchr.h */,
+				8377DDA219F2A5D800994874 /* cydcrush.c */,
+				8377DDA319F2A5D800994874 /* cydcrush.h */,
+				8377DDA419F2A5D800994874 /* cyddefs.h */,
+				8377DDA519F2A5D800994874 /* cydentry.c */,
+				8377DDA619F2A5D800994874 /* cydentry.h */,
+				8377DDA719F2A5D800994874 /* cydflt.c */,
+				8377DDA819F2A5D800994874 /* cydflt.h */,
+				8377DDA919F2A5D800994874 /* cydfm.c */,
+				8377DDAA19F2A5D800994874 /* cydfm.h */,
+				8377DDAB19F2A5D800994874 /* cydfx.c */,
+				8377DDAC19F2A5D800994874 /* cydfx.h */,
+				8377DDAD19F2A5D800994874 /* cydosc.c */,
+				8377DDAE19F2A5D800994874 /* cydosc.h */,
+				8377DDAF19F2A5D800994874 /* cydrvb.c */,
+				8377DDB019F2A5D800994874 /* cydrvb.h */,
+				8377DDB119F2A5D800994874 /* cydtypes.h */,
+				8377DDB219F2A5D800994874 /* cydwave.c */,
+				8377DDB319F2A5D800994874 /* cydwave.h */,
+				8377DDB419F2A5D800994874 /* freqs.c */,
+				8377DDB519F2A5D800994874 /* freqs.h */,
+				8377DDB619F2A5D800994874 /* music.c */,
+				8377DDB719F2A5D800994874 /* music.h */,
+				8377DDB819F2A5D800994874 /* pack.c */,
+				8377DDB919F2A5D800994874 /* pack.h */,
+			);
+			name = snd;
+			path = ../../klystron/src/snd;
+			sourceTree = "<group>";
+		};
+		8377DE1F19F2A6A200994874 /* gfx */ = {
+			isa = PBXGroup;
+			children = (
+				8377DE2019F2A6A200994874 /* background.c */,
+				8377DE2119F2A6A200994874 /* background.h */,
+				8377DE2219F2A6A200994874 /* bgcell.c */,
+				8377DE2319F2A6A200994874 /* bgcell.h */,
+				8377DE2419F2A6A200994874 /* font.c */,
+				8377DE2519F2A6A200994874 /* font.h */,
+				8377DE2619F2A6A200994874 /* gfx.c */,
+				8377DE2719F2A6A200994874 /* gfx.h */,
+				8377DE2819F2A6A200994874 /* gfxsurf.h */,
+				8377DE2919F2A6A200994874 /* levelbase.c */,
+				8377DE2A19F2A6A200994874 /* levelbase.h */,
+				8377DE2B19F2A6A200994874 /* objhdr.c */,
+				8377DE2C19F2A6A200994874 /* objhdr.h */,
+				8377DE2D19F2A6A200994874 /* tiledescriptor.h */,
+			);
+			name = gfx;
+			path = ../../klystron/src/gfx;
+			sourceTree = "<group>";
+		};
+		8377DE3C19F2A6A200994874 /* gui */ = {
+			isa = PBXGroup;
+			children = (
+				8377DE3D19F2A6A200994874 /* bevdefs.h */,
+				8377DE3E19F2A6A200994874 /* bevel.c */,
+				8377DE3F19F2A6A200994874 /* bevel.h */,
+				8377DE4019F2A6A200994874 /* dialog.c */,
+				8377DE4119F2A6A200994874 /* dialog.h */,
+				8377DE4219F2A6A200994874 /* filebox.c */,
+				8377DE4319F2A6A200994874 /* filebox.h */,
+				8377DE4419F2A6A200994874 /* menu.c */,
+				8377DE4519F2A6A200994874 /* menu.h */,
+				8377DE4619F2A6A200994874 /* mouse.c */,
+				8377DE4719F2A6A200994874 /* mouse.h */,
+				8377DE4819F2A6A200994874 /* msgbox.c */,
+				8377DE4919F2A6A200994874 /* msgbox.h */,
+				8377DE4A19F2A6A200994874 /* shortcuts.c */,
+				8377DE4B19F2A6A200994874 /* shortcuts.h */,
+				8377DE4C19F2A6A200994874 /* slider.c */,
+				8377DE4D19F2A6A200994874 /* slider.h */,
+				8377DE4E19F2A6A200994874 /* toolutil.c */,
+				8377DE4F19F2A6A200994874 /* toolutil.h */,
+				8377DE5019F2A6A200994874 /* view.c */,
+				8377DE5119F2A6A200994874 /* view.h */,
+			);
+			name = gui;
+			path = ../../klystron/src/gui;
+			sourceTree = "<group>";
+		};
+		8377DE8719F2A74D00994874 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8377DE8819F2A74D00994874 /* bundle.c */,
+				8377DE8919F2A74D00994874 /* bundle.h */,
+				8377DE8A19F2A74D00994874 /* rnd.c */,
+				8377DE8B19F2A74D00994874 /* rnd.h */,
+			);
+			name = util;
+			path = ../../klystron/src/util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8377DBE019F2A19900994874 /* make_bundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8377DBE519F2A19900994874 /* Build configuration list for PBXNativeTarget "make_bundle" */;
+			buildPhases = (
+				8377DBDD19F2A19900994874 /* Sources */,
+				8377DBDE19F2A19900994874 /* Frameworks */,
+				8377DBDF19F2A19900994874 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = make_bundle;
+			productName = make_bundle;
+			productReference = 8377DBE119F2A19900994874 /* make_bundle */;
+			productType = "com.apple.product-type.tool";
+		};
+		8D1107260486CEB800E47090 /* Klystrack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Klystrack" */;
+			buildPhases = (
+				83EBEA2A12BC0D3E00263A0E /* Version files */,
+				8343837D19F2B440001EDF56 /* Bundle theme resources */,
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				002F39FD09D0883400EBEB88 /* Copy Frameworks into .app bundle */,
+				8378C7E119A0F46A00AFBD43 /* Fix frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8343837C19F2B411001EDF56 /* PBXTargetDependency */,
+			);
+			name = Klystrack;
+			productInstallPath = "$(HOME)/Applications";
+			productName = OSX_Xcode;
+			productReference = 8D1107320486CEB800E47090 /* Klystrack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Zorin Heavy Industries";
+				TargetAttributes = {
+					8377DBE019F2A19900994874 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OSX_Xcode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* OSX_Xcode */;
+			projectDirPath = "";
+			projectRoots = (
+				"",
+				..,
+			);
+			targets = (
+				8D1107260486CEB800E47090 /* Klystrack */,
+				8377DBE019F2A19900994874 /* make_bundle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				8377DD3A19F2A5A500994874 /* version in Resources */,
+				83C75C6812BBF7B20067F040 /* 256x256.icns in Resources */,
+				8343837F19F2C341001EDF56 /* res in Resources */,
+				8377DD3B19F2A5A500994874 /* version.in in Resources */,
+				83722F13167AAA8F00336AFC /* key in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8343837D19F2B440001EDF56 /* Bundle theme resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../themes/AHX",
+				"$(SRCROOT)/../themes/Blacklyst",
+				"$(SRCROOT)/../themes/C64",
+				"$(SRCROOT)/../themes/Classic",
+				"$(SRCROOT)/../themes/Default",
+				"$(SRCROOT)/../themes/Gameboy",
+				"$(SRCROOT)/../themes/Golden_Brown",
+			);
+			name = "Bundle theme resources";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/res/AHX",
+				"$(DERIVED_FILE_DIR)/res/Blacklyst",
+				"$(DERIVED_FILE_DIR)/res/C64",
+				"$(DERIVED_FILE_DIR)/res/Classic",
+				"$(DERIVED_FILE_DIR)/res/Default",
+				"$(DERIVED_FILE_DIR)/res/Gameboy",
+				"$(DERIVED_FILE_DIR)/res/Golden_Brown",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "THEMES=\"AHX Blacklyst C64 Classic Default Gameboy Golden_Brown\"\nTHEMEDIR=$SRCROOT/../themes\nMAKEBUNDLE=$BUILT_PRODUCTS_DIR/make_bundle\n\nfunction cpie {\n    if [ -f $1 ]; then\n        cp -f $1 $2\n    fi\n}\n\nfor theme in $THEMES; do\necho \"Building theme $theme...\"\nmkdir -p res\nmkdir -p themetemp\ncpie $THEMEDIR/$theme/colors.txt themetemp\ncpie $THEMEDIR/$theme/bevel.* themetemp\ncpie $THEMEDIR/$theme/vu.* themetemp\ncpie $THEMEDIR/$theme/analyzor.* themetemp\ncpie $THEMEDIR/$theme/logo.* themetemp\ncpie $THEMEDIR/$theme/catometer.* themetemp\nif test -d $THEMEDIR/$theme/font; then $MAKEBUNDLE themetemp/8x8.fnt $THEMEDIR/$theme/font ; fi\nif test -d $THEMEDIR/$theme/font7x6; then $MAKEBUNDLE themetemp/7x6.fnt $THEMEDIR/$theme/font7x6 ; fi\nif test -d $THEMEDIR/$theme/tiny; then $MAKEBUNDLE themetemp/4x6.fnt $THEMEDIR/$theme/tiny ; fi\n$MAKEBUNDLE res/$theme themetemp\nrm -rf themetemp\ndone";
+		};
+		8378C7E119A0F46A00AFBD43 /* Fix frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "function relocateLibraryInCurrentApp() {\n  install_name_tool -change $1$2 @executable_path/../Frameworks/$2 $CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH\n}\nrelocateLibraryInCurrentApp @rpath/ SDL2_image.framework/Versions/A/SDL2_image\nrelocateLibraryInCurrentApp @rpath/ SDL2.framework/Versions/A/SDL2";
+		};
+		83EBEA2A12BC0D3E00263A0E /* Version files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../src/version",
+			);
+			name = "Version files";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/../src/version_number.h",
+				"$(DERIVED_FILE_DIR)/../src/version.h",
+				"$(DERIVED_FILE_DIR)/../../klystron/src/version.h",
+				"$(DERIVED_FILE_DIR)/myfile",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cat > ../src/version_number.h <<EOF\n#ifndef VERSION_NUMBER\n#define VERSION_NUMBER\n#define VERSION \"`cat ../src/version`\"\n#endif\nEOF\n\ncat > ../src/version.h <<EOF\n#ifndef VERSION_H\n#define VERSION_H\n#include \"version_number.h\"\n#define REVISION \"r`git log --oneline | wc -l | tr -d ' '`\"\n#define VERSION_STRING \"klystrack \" VERSION \" \" REVISION\n#endif\nEOF\n\ncat > ../../klystron/src/version.h <<EOF\n#ifndef KLYSTRON_VERSION_H\n#define KLYSTRON_VERSION_H\n#define KLYSTRON_REVISION \"r`(cd ../../klystron && git log --oneline | wc -l | tr -d ' ')`\"\n#define KLYSTRON_VERSION_STRING \"klystron \" KLYSTRON_REVISION\n#endif\nEOF\n\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8377DBDD19F2A19900994874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8377DBE919F2A24500994874 /* makebundle.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8377DE0219F2A5D800994874 /* cyd.c in Sources */,
+				8377DDFE19F2A5D800994874 /* ksnd.c in Sources */,
+				8377DD3119F2A5A500994874 /* main.c in Sources */,
+				8377DD2E19F2A5A500994874 /* xm.c in Sources */,
+				8377DD2919F2A5A500994874 /* help.c in Sources */,
+				8377DD2619F2A5A500994874 /* edit.c in Sources */,
+				8377DE7919F2A6A300994874 /* shortcuts.c in Sources */,
+				8377DE0319F2A5D800994874 /* cydchr.c in Sources */,
+				8377DD3619F2A5A500994874 /* optimize.c in Sources */,
+				8377DE0619F2A5D800994874 /* cydflt.c in Sources */,
+				8377DE6819F2A6A300994874 /* bgcell.c in Sources */,
+				8377DD3919F2A5A500994874 /* undo.c in Sources */,
+				002F3A2E09D0888800EBEB88 /* SDLMain.m in Sources */,
+				8377DD4819F2A5A500994874 /* wave.c in Sources */,
+				8377DD3819F2A5A500994874 /* theme.c in Sources */,
+				8377DE6A19F2A6A300994874 /* gfx.c in Sources */,
+				8377DE6C19F2A6A300994874 /* objhdr.c in Sources */,
+				8377DD2119F2A5A500994874 /* command.c in Sources */,
+				8377DD2019F2A5A500994874 /* clipboard.c in Sources */,
+				690F32491ED4BB240011FD0E /* wavewriter.c in Sources */,
+				8377DD2719F2A5A500994874 /* event.c in Sources */,
+				8377DE7C19F2A6A300994874 /* view.c in Sources */,
+				8377DD2B19F2A5A500994874 /* import.c in Sources */,
+				8377DE0B19F2A5D800994874 /* cydwave.c in Sources */,
+				8377DE7719F2A6A300994874 /* mouse.c in Sources */,
+				8377DE7B19F2A6A300994874 /* toolutil.c in Sources */,
+				8377DE0C19F2A5D800994874 /* freqs.c in Sources */,
+				8377DE6919F2A6A300994874 /* font.c in Sources */,
+				8377DD2519F2A5A500994874 /* diskop.c in Sources */,
+				8377DE0719F2A5D800994874 /* cydfm.c in Sources */,
+				8377DD3319F2A5A500994874 /* midi.c in Sources */,
+				8377DD4919F2A5A500994874 /* wavegen.c in Sources */,
+				8377DE0A19F2A5D800994874 /* cydrvb.c in Sources */,
+				690F323C1ED4BB0A0011FD0E /* hubbard.c in Sources */,
+				8377DE7419F2A6A300994874 /* dialog.c in Sources */,
+				8377DD3E19F2A5A500994874 /* timer.c in Sources */,
+				8377DD2F19F2A5A500994874 /* key.c in Sources */,
+				8377DD3519F2A5A500994874 /* nostalgy.c in Sources */,
+				690F32481ED4BB240011FD0E /* stats.c in Sources */,
+				8377DD2319F2A5A500994874 /* console.c in Sources */,
+				690F323D1ED4BB0A0011FD0E /* hubdialog.c in Sources */,
+				8377DE7A19F2A6A300994874 /* slider.c in Sources */,
+				8377DD4719F2A5A500994874 /* wave_action.c in Sources */,
+				8377DE7619F2A6A300994874 /* menu.c in Sources */,
+				8377DE6719F2A6A300994874 /* background.c in Sources */,
+				8377DE0419F2A5D800994874 /* cydcrush.c in Sources */,
+				8377DE7319F2A6A300994874 /* bevel.c in Sources */,
+				8377DD2C19F2A5A500994874 /* mod.c in Sources */,
+				8377DD2419F2A5A500994874 /* copypaste.c in Sources */,
+				8377DD3C19F2A5A500994874 /* pattern.c in Sources */,
+				8377DD2A19F2A5A500994874 /* ahx.c in Sources */,
+				8377DE0E19F2A5D800994874 /* pack.c in Sources */,
+				8377DE7519F2A6A300994874 /* filebox.c in Sources */,
+				8377DD4619F2A5A500994874 /* view.c in Sources */,
+				8377DD1F19F2A5A500994874 /* action.c in Sources */,
+				8377DE0519F2A5D800994874 /* cydentry.c in Sources */,
+				8377DD3719F2A5A500994874 /* shortcutdefs.c in Sources */,
+				8377DE6B19F2A6A300994874 /* levelbase.c in Sources */,
+				690F32471ED4BB240011FD0E /* memwriter.c in Sources */,
+				8377DE8C19F2A74D00994874 /* bundle.c in Sources */,
+				8377DD3219F2A5A500994874 /* menudefs.c in Sources */,
+				8377DD3D19F2A5A500994874 /* sequence.c in Sources */,
+				8377DE0819F2A5D800994874 /* cydfx.c in Sources */,
+				8377DE8D19F2A74D00994874 /* rnd.c in Sources */,
+				8377DD2219F2A5A500994874 /* config.c in Sources */,
+				8377DD3419F2A5A500994874 /* mused.c in Sources */,
+				690F324A1ED4BB240011FD0E /* zap.c in Sources */,
+				8377DD2D19F2A5A500994874 /* org.c in Sources */,
+				8377DE0D19F2A5D800994874 /* music.c in Sources */,
+				8377DE0919F2A5D800994874 /* cydosc.c in Sources */,
+				8377DD2819F2A5A500994874 /* export.c in Sources */,
+				8377DD4019F2A5A500994874 /* wavetableview.c in Sources */,
+				8377DD3F19F2A5A500994874 /* visu.c in Sources */,
+				8377DD3019F2A5A500994874 /* keytab.c in Sources */,
+				8377DE7819F2A6A300994874 /* msgbox.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8343837C19F2B411001EDF56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8377DBE019F2A19900994874 /* make_bundle */;
+			targetProxy = 8343837B19F2B411001EDF56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8377DBE619F2A19900994874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8377DBE719F2A19900994874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		83EBE95A12BBFDF900263A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					USESDL_IMAGE,
+					STEREOOUTPUT,
+					ENABLEAUDIODUMP,
+					NOSDL_MIXER,
+					USESDLMUTEXES,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				USER_HEADER_SEARCH_PATHS = "../../klystron/src ../src";
+			};
+			name = Release;
+		};
+		83EBE95B12BBFDF900263A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					USESDL_IMAGE,
+					STEREOOUTPUT,
+					ENABLEAUDIODUMP,
+					NOSDL_MIXER,
+					USESDLMUTEXES,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_image.framework/Headers,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = Klystrack;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					USESDL_IMAGE,
+					STEREOOUTPUT,
+					ENABLEAUDIODUMP,
+					USESDLMUTEXES,
+					NOSDL_MIXER,
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_image.framework/Headers,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = Klystrack;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					USESDL_IMAGE,
+					STEREOOUTPUT,
+					ENABLEAUDIODUMP,
+					USESDLMUTEXES,
+					NOSDL_MIXER,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				USER_HEADER_SEARCH_PATHS = "../../klystron/src ../src";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8377DBE519F2A19900994874 /* Build configuration list for PBXNativeTarget "make_bundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8377DBE619F2A19900994874 /* Debug */,
+				8377DBE719F2A19900994874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Klystrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				83EBE95B12BBFDF900263A0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OSX_Xcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				83EBE95A12BBFDF900263A0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
